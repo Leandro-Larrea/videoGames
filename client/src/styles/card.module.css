@@ -1,0 +1,6 @@
+.main{
+    max-width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
