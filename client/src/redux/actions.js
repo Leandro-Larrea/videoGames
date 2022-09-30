@@ -3,6 +3,7 @@ export const GET_GAME_DETAIL = "GET_GAME_DETAIL";
 export const GET_GAME_NAME = "GET_GAME_NAME";
 export const GET_GENRES = "GET_GENRES";
 export const GET_ID = "GET_ID";
+export const CLEAN = "CLEAN";
 
 export const getAll = () => dispatch =>
 fetch("http://localhost:3001/videogames")
@@ -18,12 +19,19 @@ fetch(`http://localhost:3001/videogames?name=${name}`)
     dispatch({type: GET_GAME_NAME, payload: a})
 })
 
-export const getId = (id) => dispatch =>
-fetch(`http://localhost:3001/videogames/${id}`)
+export const getId = (id) => (dispatch) =>{
+    console.log("action")  
+return fetch(`http://localhost:3001/videogames/${id}`)
 .then(answer => answer.json())
 .then(a => {
-    dispatch({type: GET_ID, payload: a})
+    dispatch({type: GET_GAME_DETAIL, payload: a})   
 })
+
+}
+
+export const clean = ()=> (dispatch) =>{
+    dispatch({type: CLEAN, payload: null })
+}
 
 // - [ ] __GET /videogames__:
 // - Obtener un listado de los videojuegos

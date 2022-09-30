@@ -1,13 +1,19 @@
-import './App.css';
 import React from "react";
 import {Route} from "react-router-dom";
 import { Home } from './components/Home.jsx';
+import style from "./styles/app.module.css";
+import { Landing } from './components/Landing.jsx';
+import { Nav } from "./components/Nav.jsx";
+import { Data } from "./components/Data.jsx";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Videogames</h1>
-      <Home/>
+    <div className={style.app}>
+      <Route path="/menu" component={Nav}/>
+      <Route exact path="/menu" component={Home}/>
+      <Route path="/data/:id" component={Data}/>
+      <Route exact path="/" component={Landing}/>
+      
     </div>
   );
 }

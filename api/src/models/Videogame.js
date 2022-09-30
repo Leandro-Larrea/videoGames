@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('videogame', {
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, 
       allowNull: false
     },
     id:{
@@ -26,8 +26,8 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true
     },
-    plataforms:{
-      type: DataTypes.STRING,
+    platforms:{
+      type: DataTypes.JSON,
       allowNull:false
     },
   });

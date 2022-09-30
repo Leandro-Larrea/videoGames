@@ -1,0 +1,18 @@
+.home{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.loader{
+    width: 200px;
+    height: 200px;
+}
+.loaderContainer{
+    display: flex;
+    width:100%;
+    min-height: 80vh;
+    justify-content: center;
+    align-items: center;
+}

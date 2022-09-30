@@ -3,11 +3,16 @@ import { NavLink } from "react-router-dom";
 import style from "../styles/card.module.css"
 
 export function Card(props){
-    return (
-        <div className={style.main}>
-            <div>{props.name} </div>
-            <div><img src={props.img} alt="Notimg"></img></div>
-            <div>{props.platforms?.map(e => <div>{e}</div>)}</div>  
+    return (<NavLink style={{textDecoration: "none"}} to={`/data/${props.id}`}>
+        <div className={style.cardHover}>
+        <div className={style.card}>
+            
+            <div className={style.name}>{props.name}</div>
+            <div className={style.imgContainer}>
+                <img className={style.img} src={props.img} alt="Notimg"></img>
+            </div>
+            <div className={style.platforms}>{props.platforms?.map((e,i) => <div key={i}>{e}</div>)}</div>  
         </div>
-    )
+        </div>
+        </NavLink>)
 }

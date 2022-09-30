@@ -18,4 +18,6 @@ server.get('/', (req, res) => {
     res.send('Henry Sequelize Homework');
   });
 
+  
+
 module.exports = server;

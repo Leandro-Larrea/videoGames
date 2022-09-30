@@ -32,7 +32,8 @@ const getGames = async()=>{
                 description: "asd",
                 releaseDate: e.released,
                 rating: e.rating,
-                platforms: e.platforms.map(p => p.platform.name)     
+                platforms: e.platforms.map(p => p.platform.name),
+                img: e.background_image  
           }
       })
       gamesData = await Videogame.findAll()
@@ -74,7 +75,6 @@ const getId = async(id)=>{
         description:game.data.description,
         genres: game.data.genres.map(e=> e.name)            
     }
-
     return description
 }
 
@@ -82,7 +82,7 @@ router.get("/:idVideogame",async(req,res)=>{
     const { idVideogame } = req.params;
     if(idVideogame){
     let data = await getId(idVideogame)
-    res.status(200).json({description: data});
+    res.status(200).json({description: data.description});
 }
 })
 

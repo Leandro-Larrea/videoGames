@@ -1,0 +1,17 @@
+.form{
+    display: flex;
+    max-width: 270px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.input{
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+.input:focus{
+    outline: none;
+    border: 3px solid rgba(0, 160, 100, 0,4);
+}

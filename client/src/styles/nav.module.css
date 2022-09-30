@@ -1,0 +1,36 @@
+
+.nav{
+    display: flex;
+    padding: 5px;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+.logo{
+   background-color: transparent;
+    width: 60px;
+    height: 50px;
+    margin-left: 10px;
+}
+.buttons{
+    flex-basis: 30%;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+}
+button{
+    font-size: 1rem;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border: 2px solid transparent;
+    width: 100%;
+}
+button:hover{
+    border-right: 2px solid white ;
+    border-left: 2px solid white ;
+}
+
