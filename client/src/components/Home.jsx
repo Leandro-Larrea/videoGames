@@ -7,7 +7,7 @@ import style from "../styles/home.module.css"
 import kirby from "../images/kirby.gif"
 
 export function Home(props){
-  console.log(3)
+  
     const dispatch = useDispatch();
     const games = useSelector((state) => state.games);
     useEffect(()=>{
@@ -20,7 +20,7 @@ export function Home(props){
           { games.ahi_va_el_json?.map(e => <Card key={e.id} 
           name={e.name}
           img={e.img}
-          platforms={e.platforms}
+          platforms={e.genres}
           id={e.id}
           />
           

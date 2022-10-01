@@ -24,13 +24,21 @@ export const getId = (id) => (dispatch) =>{
 return fetch(`http://localhost:3001/videogames/${id}`)
 .then(answer => answer.json())
 .then(a => {
-    dispatch({type: GET_GAME_DETAIL, payload: a})   
+    dispatch({type: GET_GAME_DETAIL, payload: a.data})   
 })
 
 }
 
+export const getGenres = () => dispatch =>{
+    fetch("http://localhost:3001/genres")
+    .then(eso => eso.json())
+    .then(eso2 =>{
+        dispatch({type: GET_GENRES, payload:eso2})
+    })
+}
+
 export const clean = ()=> (dispatch) =>{
-    dispatch({type: CLEAN, payload: null })
+    dispatch({type: CLEAN})
 }
 
 // - [ ] __GET /videogames__:

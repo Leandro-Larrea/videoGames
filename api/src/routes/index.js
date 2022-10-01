@@ -11,7 +11,7 @@ const genrerMidleware = require('./genres.js')
 
 // Configurar los routers
 server.use('/videogames', videogameMidleware)
- server.use('/genres', genrerMidleware)
+server.use('/genres', genrerMidleware)
 // Ejemplo: router.use('/auth', authRouter);
 
 server.get('/', (req, res) => {

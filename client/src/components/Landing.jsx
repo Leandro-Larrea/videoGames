@@ -10,10 +10,8 @@ export class Landing extends Component{
         return(
         <main className={style.main}>
             <div className={style.imgContainer}>
-                <img className={style.img} src={img}/>
-                     
-                <Link className={style.Link} to={"/menu"}><button className={style.button}>Go In </button></Link>  
-                      
+                <img className={style.img} src={img}/>        
+                <Link className={style.Link} to={"/menu"}><button className={style.button}>Go In </button></Link>             
             </div>
         </main>)
     }

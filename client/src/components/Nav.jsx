@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import style from "../styles/nav.module.css";
 import joystick from "../images/console.png";
 import { SearchBar } from "./SearchBar";
+import { Link } from "react-router-dom";
 
 export function Nav(){
     return(
@@ -12,7 +13,7 @@ export function Nav(){
             <div className={style.buttons}>
                 <button>Home</button>
                 <button>About</button>
-                <button>Post Game</button>
+                <Link to="/post"><button>Post Game</button></Link>
             </div>
         </nav>
     )

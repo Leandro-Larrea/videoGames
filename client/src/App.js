@@ -5,6 +5,7 @@ import style from "./styles/app.module.css";
 import { Landing } from './components/Landing.jsx';
 import { Nav } from "./components/Nav.jsx";
 import { Data } from "./components/Data.jsx";
+import Post from "./components/Post.jsx";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route exact path="/menu" component={Home}/>
       <Route path="/data/:id" component={Data}/>
       <Route exact path="/" component={Landing}/>
+      <Route path="/post" component={Post}/>
       
     </div>
   );

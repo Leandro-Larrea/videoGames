@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import style from "../styles/card.module.css"
 
 export function Card(props){
-    return (<NavLink style={{textDecoration: "none"}} to={`/data/${props.id}`}>
+    return (<NavLink style={{textDecoration:"none"}} to={`/data/${props.id}`}>
         <div className={style.cardHover}>
         <div className={style.card}>
             

@@ -4,19 +4,29 @@ import { useEffect } from "react";
 import { getId } from "../redux/actions";
 import { clean } from "../redux/actions";
 import style from "../styles/data.module.css"
+
 export function Data(props){
+
     
-    console.log(3)
     const id = props.match.params.id;
-    const detail = useSelector(state => state.gameDetail)
     const dispatch = useDispatch()
-  
-    useEffect(()=>{ 
-        console.log("useefect")     
+    console.log(id)
+
+    useEffect(()=>{     
         dispatch(getId(id))
-        
+        return ()=> dispatch(clean())     
     },[]);
+
+    const detail = useSelector(state => state.gameDetail)
+        console.log(detail)
+        
 return (
-       <p className={style.text}>{detail.description}</p>
-) 
-}
+    <div>
+           
+            <div className={style.text}>{detail.description}</div>                  
+        
+        <img src={detail.img}></img>
+    </div>
+) }
+
+
