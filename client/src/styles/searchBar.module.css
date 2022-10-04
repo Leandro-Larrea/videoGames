@@ -1,3 +1,20 @@
+.main{
+    display: flex;
+    gap: 1rem;
+}
+
+.select{
+    color: black;
+    height: 30px;
+}
+
+.selectContainer{
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items:center ;
+}
+
 .form{
     display: flex;
     max-width: 270px;

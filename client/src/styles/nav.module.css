@@ -8,6 +8,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     margin-bottom: 20px;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 .logo{
    background-color: transparent;
@@ -33,4 +34,5 @@ button:hover{
     border-right: 2px solid white ;
     border-left: 2px solid white ;
 }
+
 

@@ -7,6 +7,7 @@
     box-sizing: border-box;
     border: 1px solid red;
 }
+
 .form{
     height: 100%;
     display: grid;
@@ -14,6 +15,15 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 30px;
     border: 1px solid red;
+    justify-items:center ;
+}
+
+.item{
+
+}
+
+.label{
+    color: white;
 }
 
 input{
@@ -21,4 +31,27 @@ input{
     border-radius: 5px;
     height: 1.5rem;
     border: 3px solid transparent;
+}
+
+.check{
+    color: white;
+}
+
+.itemCheck{
+    border: 1px solid green;
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+}
+.checkLabel{
+    color: white;
+}
+
+.checksContainer{
+    grid-column: span 2;
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
 }

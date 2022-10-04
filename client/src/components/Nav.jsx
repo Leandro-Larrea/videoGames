@@ -4,6 +4,7 @@ import style from "../styles/nav.module.css";
 import joystick from "../images/console.png";
 import { SearchBar } from "./SearchBar";
 import { Link } from "react-router-dom";
+import {Menu} from "./Menu.jsx"
 
 export function Nav(){
     return(
@@ -13,6 +14,7 @@ export function Nav(){
             <div className={style.buttons}>
                 <button>Home</button>
                 <button>About</button>
+                <Menu></Menu>
                 <Link to="/post"><button>Post Game</button></Link>
             </div>
         </nav>

@@ -30,7 +30,8 @@ const getGames = async()=>{
                 name: e.name,
                 id: e.id, 
                 genres: e.genres.map(p => p.name),
-                img: e.background_image  
+                img: e.background_image,  
+                rating: e.rating
           }
       })
       gamesData = await Videogame.findAll()
@@ -69,6 +70,7 @@ router.get("/",async(req,res)=>{
 const getId = async(id)=>{
     let game = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
     description = {
+        name: game.data.name,
         description:game.data.description,
         genres: game.data.genres.map(e=> e.name),
         releaseDate: game.data.released,

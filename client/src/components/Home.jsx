@@ -1,32 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import {Card} from "./Card.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAll } from "../redux/actions"
 import style from "../styles/home.module.css"
-import kirby from "../images/kirby.gif"
+import loader2 from "../images/loader2.gif"
+import { genresFilter } from "../redux/actions";
+import { Pages } from "./Pages.jsx";
 
 export function Home(props){
-  
     const dispatch = useDispatch();
-    const games = useSelector((state) => state.games);
+
+    const games = useSelector(state => state.filterGames);
+
     useEffect(()=>{
         dispatch(getAll())
+        dispatch(genresFilter("Todos"))
     },[]);
 
-        console.log(games.ahi_va_el_json)
-        if(games.length < 100){return <div className={style.loaderContainer}> <img className={style.loader} src={kirby}></img></div>}
-        return (<main className={style.home}>
-          { games.ahi_va_el_json?.map(e => <Card key={e.id} 
+    const [currentPage, setCurrentPage] = useState(1)
+    const [gamesPerPage, setGamePerPage] = useState(15)
+    const lastGame = currentPage * gamesPerPage
+    const firstGame = lastGame - gamesPerPage
+    const renderGames = games.slice(firstGame, lastGame)
+
+    const fcUpdate = (x)=>{
+      setCurrentPage(x)
+    }
+        console.log(games)
+        if(games.length === 0){
+        return <div className={style.loaderContainer}> <img className={style.loader} src={loader2}></img></div>}
+        return (<div>
+        <Pages juegos={games.length} juegosPorPagina={gamesPerPage} actualizar={fcUpdate}/>
+        <main className={style.home}>
+        
+          {renderGames?.map(e => <Card key={e.id} 
           name={e.name}
           img={e.img}
           platforms={e.genres}
           id={e.id}
           />
-          
-          ) } 
-          
+          )}    
         </main>
-        ) 
-    
-}
+        </div>
+      )    
+    }
