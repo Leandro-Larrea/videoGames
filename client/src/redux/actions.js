@@ -1,3 +1,4 @@
+import axios from "axios";
 export const GET_ALL = "GET_ALL";
 export const GET_GAME_DETAIL = "GET_GAME_DETAIL";
 export const GET_GAME_NAME = "GET_GAME_NAME";
@@ -8,13 +9,27 @@ export const FILTER = "FILTER";
 export const SEARCH_NAME = "SEARCH_NAME";
 export const SORT_ABC = "SORT_ABC";
 export const SORT_RATING = "SORT_RATING";
+export const FILTER_DB = "FILTER_DB";
+export const GET_PLATFORMS = "GET_PLATFORMS"
+
+
 
 export const getAll = () => dispatch =>
 fetch("http://localhost:3001/videogames")
 .then(answer => answer.json())
-.then(a => { 
+.then(a => { console.log(a)
     dispatch({type: GET_ALL, payload: a["ahi_va_el_json"]})
 })
+
+
+export function postCharacter(obj){
+    console.log("aca va obj", obj)
+    return async function (dispatch){
+        const r = await axios.post(`http://localhost:3001/videogames`, obj);
+        console.log(r);
+        return r
+    }
+}
 
 export const getGameName = (name) => dispatch =>
 fetch(`http://localhost:3001/videogames?name=${name}`)
@@ -28,6 +43,7 @@ export const getId = (id) => (dispatch) =>{
 return fetch(`http://localhost:3001/videogames/${id}`)
 .then(answer => answer.json())
 .then(a => {
+    console.log("action idgame",a)
     dispatch({type: GET_GAME_DETAIL, payload: a.data})   
     })
 }
@@ -60,6 +76,18 @@ export const sortByRating = (t) => dispatch =>{
 export const clean = ()=> (dispatch) =>{
     dispatch({type: CLEAN})
 }
+
+export const filterDb = (t) => dispatch =>{
+    console.log("al redux si")
+   return dispatch({type: FILTER_DB, payload: t})}
+
+export const getPlatforms = () => dispatch =>
+    fetch("http://localhost:3001/videogames/platforms")
+    .then(a => a.json())
+    .then(b => {
+        dispatch({type: GET_PLATFORMS, payload: b}) 
+    })
+
 
 // - [ ] __GET /videogames__:
 // - Obtener un listado de los videojuegos

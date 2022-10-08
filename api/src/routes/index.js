@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const videogameMidleware = require('./videogames.js')
-const genrerMidleware = require('./genres.js')
+const videogameMidleware = require('./videogames.js');
+const genrerMidleware = require('./Genres.js');
  const express = require('express');
  const server = express();
 // Importar todos los routers;

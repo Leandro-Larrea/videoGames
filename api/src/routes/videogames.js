@@ -1,12 +1,16 @@
 const { Router } = require('express');
 const { Videogame } = require("../db.js");
-const { Op } = require("sequelize")
-const axios = require("axios")
+const { Op } = require("sequelize");
+const { Genre } = require("../db.js")
+const axios = require("axios");
 const router = Router();
 require('dotenv').config();
 const {
   API_KEY
 } = process.env;
+
+
+
 
 const linksitos = async() =>{
     multiLink=[];
@@ -31,10 +35,22 @@ const getGames = async()=>{
                 id: e.id, 
                 genres: e.genres.map(p => p.name),
                 img: e.background_image,  
-                rating: e.rating
+                rating: e.rating,
+                platforms: e.platforms
           }
       })
-      gamesData = await Videogame.findAll()
+        gamesData = await Videogame.findAll({
+            include:{
+                model: Genre,
+                     attributes: ['name'],
+                     through:{
+                         attributes: []
+                             }  
+                    }     
+        })
+    //    gamesData = gamesData.map(e => {
+    //         return {...e, genres: e.genres.map(e => e.name)}
+    //     });
       console.log(gamesData)
       return apiInfo.concat(gamesData)
 }
@@ -42,7 +58,7 @@ const getGames = async()=>{
 const getName = async(name)=>{   
     const apiGames = await linksitos()
     let arrayNames = apiGames.filter(g =>{ 
-     return  g.name.toLowerCase().includes(name.toLowerCase())
+    return  g.name.toLowerCase().includes(name.toLowerCase())
     }).map(e => e.name)
     
      const games = await Videogame.findAll({
@@ -53,6 +69,19 @@ const getName = async(name)=>{
      console.log(games)
      return arrayNames.concat(games)
 }
+
+const getPlatforms = async()=>{
+    console.log(3)
+    let box = await linksitos();
+    const plat = []
+    box.forEach((e) => e.platforms.forEach(a =>{ if(!plat.includes(a.platform.name)){plat.push(a.platform.name)}}))
+    return plat
+    }
+
+router.get("/platforms",async(req,res)=>{
+    let platforms = await getPlatforms()
+     return res.status(200).json(platforms)
+ })
 
 router.get("/",async(req,res)=>{
     const {name} = req.query;
@@ -81,29 +110,59 @@ const getId = async(id)=>{
     return description
 }
 
+async function dbGame(idg){
+    let descriptionDb = await Videogame.findAll({
+        where: {
+                id: idg
+            }
+    })
+    if(descriptionDb.length)return descriptionDb[0]
+    return Error ("fallido")
+    
+}
+
 router.get("/:idVideogame",async(req,res)=>{
     const { idVideogame } = req.params;
-    if(idVideogame){
-    let data = await getId(idVideogame)
+    if(idVideogame){try{
+            db = await dbGame(idVideogame)
+            return res.status(200).json({data:db})
+        }catch{}
+        // 
+        //     console.log("le erro el qliao")
+        //      descriptionDb = descriptionDb[0]
+        //      return res.status(200).json({descriptionDb})}
+        let data = await getId(idVideogame)
     res.status(200).json({data});
-}
+    }
 })
 
 router.post("/",async(req,res)=>{
-    const {name, id, description, platforms, rating, releaseDate} = req.body;
-    if(!name|| !id|| !description || !platforms){
+    const {name,  description, platforms, rating, releaseDate, genres} = req.body;
+    if(!name|| !description || !platforms || !genres){
         return res.status(404).send("faltan datos")
     }
     try {
         let game = await Videogame.create(req.body)
+        let genresDb = await Genre.findAll({where:{
+            name: genres
+        }})
+        game.addGenre(genresDb)
         res.status(201).json(game)
-    } catch (error) {
+    }   catch (error) {
         return res.status(404).send("Error en alguno de los datos provistos")
     } 
 })
 
+
+
+
 module.exports = router;
 
+
+// let typesDb = await Type.findAll({
+//     where : { name : types} 
+// })
+// newPokemon.addTypes(typesDb)
 // - [ ] __GET /videogames__:
 //   - Obtener un listado de los videojuegos
 //   - Debe devolver solo los datos necesarios para la ruta principal

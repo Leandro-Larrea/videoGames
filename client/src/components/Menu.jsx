@@ -1,6 +1,7 @@
 import React from "react";
-import { sortByRating } from "../redux/actions";
+import { sortByRating, sortByAbc } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
+import style from "../styles/menu.module.css"
 
 
 
@@ -17,16 +18,27 @@ const sort = (e)=>{
         dispatch(sortByRating(t))}
 }
 
-return (<div>
+const abc = (e)=>{
+    e.preventDefault()
+    let t = e.target.value
+    
+    if(t !== "ABC"){
+        console.log(t)
+        dispatch(sortByAbc(t))}
+}
+
+return (<div className={style.container}>
             <select onChange={sort}>
                 <option value="Rating">Rating</option>
+                <option value="default">Default</option>
                 <option value="ascending">Ascending</option>
                 <option value="descending">Descending</option>
             </select>
-            <select onChange={sort}>
-                <option>Default</option>
-                <option>Normal</option>
-                <option>Reverse</option>
+            <select onChange={abc}>
+                <option value="ABC">ABC</option>
+                <option value="default">Default</option>
+                <option value="normal">A-Z</option>
+                <option value="reverse">Z-A</option>
             </select>
         </div>
         )

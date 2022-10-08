@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { getGameName, getGenres } from "../redux/actions";
 import { genresFilter } from "../redux/actions";
 import { search } from "../redux/actions";
+import { filterDb } from "../redux/actions";
 
 export function SearchBar(){
 
@@ -38,6 +39,12 @@ export function SearchBar(){
         // dispatch(getGameName(text))
     }
 
+    function filtrarDb(e){
+        let t = e.target.value
+        console.log(t)
+        dispatch(filterDb(t))
+    }
+
     return(
             <div className={style.main}>
                 <div className={style.selectContainer}>
@@ -46,6 +53,13 @@ export function SearchBar(){
                         {
                             genres?.map((e,i)=> <option key={i} value ={e.name}className={style.option}>{e.name}</option>)
                         }
+                    </select>
+                </div>
+                <div className={style.selectContainer}>
+                    <select className={style.select} onChange={filtrarDb}>
+                    <option className={style.option} value="todos">Todos</option>
+                    <option className={style.option} value="db">Posted</option>
+                    <option className={style.option} value="api">Api</option>
                     </select>
                 </div>
                 <form className={style.form} onSubmit={Search}>

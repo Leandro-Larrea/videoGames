@@ -3,6 +3,8 @@
     flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
+    background-color: black;
+    min-height: 95vh;
 }
 
 .loader{

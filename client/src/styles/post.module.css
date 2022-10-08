@@ -5,7 +5,6 @@
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
-    border: 1px solid red;
 }
 
 .form{
@@ -14,22 +13,50 @@
     align-items: center;
     grid-template-columns: 1fr 1fr;
     column-gap: 30px;
-    border: 1px solid red;
+    row-gap: 30px;
     justify-items:center ;
+    border: 1px solid white;
+    max-width: 800px;
 }
 
-.item{
+/* .item{
+    grid-column: span 2;
+} */
 
+.itemDescription{
+    grid-column: span 2;  
+    width: 80%;
+}
+
+.itemDescription textArea{
+    width: 100%;
+    grid-column: span 2;
+    height: 5rem;
+    overflow-y: scroll;
+    outline: none;
 }
 
 .label{
     color: white;
+    display: block;
+    margin-bottom: 5px;
 }
 
-input{
+.input{
     outline: none;
-    border-radius: 5px;
-    height: 1.5rem;
+    border-radius: 3px;
+    border: 3px solid green;
+}
+
+.inputOptional{
+    outline: none;
+    border-radius: 3px;
+    
+    border: 3px solid transparent;
+}
+
+.error{
+    border-radius: 3px;
     border: 3px solid transparent;
 }
 
@@ -38,20 +65,57 @@ input{
 }
 
 .itemCheck{
-    border: 1px solid green;
+   padding: 5px;
     width: 100%;
     display: grid;
     justify-content: space-between;
     grid-template-columns: 1fr 1fr;
 }
+
 .checkLabel{
     color: white;
 }
 
 .checksContainer{
     grid-column: span 2;
-    border: 1px solid red;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    justify-items: space-between;
+}
+
+.submit{
+    grid-column: span 2;
+    max-width: 130px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer; 
+    border-radius: 5px; 
+    border: 2px solid rgba(0, 100, 150, 0.8);; 
+}
+
+.submit:hover{
+    background-color: rgba(0, 80, 180, 0.7);
+    transform: scale(1.1);
+    border: 2px solid white;
+    box-shadow: 0px 0px 15px rgba(254, 255, 254, 0.918); 
+}
+.h2Container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+.errorImg{
+    display: none;
+    justify-self: left;
+}
+.ok{
+    display: inline;
+    width: 1rem;
+    height: 1rem;
+}
+h2{
+    color:white
 }
