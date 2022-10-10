@@ -14,7 +14,7 @@
 }
 
 .cardHover{
-    max-width: 300px;
+    width: 300px;
     padding: 4px;
     background: transparent;
     border-radius: 3px;

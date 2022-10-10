@@ -35,8 +35,9 @@ export function SearchBar(){
 
     const Search = (e) =>{
         e.preventDefault()
-        dispatch(search(text))
-        // dispatch(getGameName(text))
+        // dispatch(search(text))
+        if(text.length === 0) return 
+         dispatch(getGameName(text))
     }
 
     function filtrarDb(e){

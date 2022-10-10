@@ -36,15 +36,22 @@ export function rootReducer(state = initialState, action){
                 ...state,
                 filterGames: [...r]
             }
-        case GET_GAME_DETAIL:       
+        case GET_GAME_DETAIL: 
+        let e = action.payload 
+            if(e.createdAtDb) e = {...e, genres: e.genres.map(e => e.name)}     
             return{        
                 ...state,
-                gameDetail: action.payload
+                gameDetail: e
         }
         case GET_GAME_NAME:
+            let s;
+            Array.isArray(action.payload)?s= action.payload.map((e) => {
+                if(e.createdAtDb) return {...e, genres: e.genres.map(e => e.name)}
+                return e
+            }): s = action.payload 
             return{
                 ...state,
-                filterGames: action.payload
+                filterGames: s
         }
         case CLEAN:
             console.log("cleaning???")
@@ -59,7 +66,7 @@ export function rootReducer(state = initialState, action){
                 }
      
         case SORT_RATING:
-
+            if(!Array.isArray(state.filterGames)) state.filterGames = [...state.games]
             console.log(state.filterGames)
             let a = action.payload === "ascending"?state.filterGames.sort((a,b) => a.rating - b.rating):
             state.filterGames.sort((a,b) => b.rating - a.rating);
@@ -68,6 +75,7 @@ export function rootReducer(state = initialState, action){
                 filterGames: [...a]
             }
         case SORT_ABC:
+            if(!Array.isArray(state.filterGames)) state.filterGames = [...state.games]
            let b = action.payload === "normal"?state.filterGames.sort((a,b) =>{if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;}):
            state.filterGames.sort((a,b) =>{if(b.name.toLowerCase() < a.name.toLowerCase()) return -1;})
             return{
@@ -81,8 +89,7 @@ export function rootReducer(state = initialState, action){
                 ...state,
                 filterGames: [...name]
             }
-        case GET_PLATFORMS:
-            
+        case GET_PLATFORMS:    
             return{
                  ...state,
                  platforms: action.payload

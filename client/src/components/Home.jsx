@@ -7,11 +7,11 @@ import style from "../styles/home.module.css";
 import loader2 from "../images/loader2.gif";
 import { genresFilter } from "../redux/actions";
 import { Pages } from "./Pages.jsx";
+import bowser from "../images/marioSad.png"
 
 export function Home(props){
   
     const dispatch = useDispatch();
-
     const games = useSelector(state => state.filterGames);
 
     useEffect(()=>{
@@ -22,6 +22,12 @@ export function Home(props){
 
     const [currentPage, setCurrentPage] = useState(1)
     const [gamesPerPage, setGamePerPage] = useState(15)
+
+    if(games === "Game not found.") return (<div className={style.notFoundContainer}>
+      <h1>{games}</h1><img className={style.notFound} src={bowser}>
+        </img>
+        </div>)
+
     const lastGame = currentPage * gamesPerPage
     const firstGame = lastGame - gamesPerPage
     const renderGames = games.slice(firstGame, lastGame)
@@ -42,7 +48,8 @@ export function Home(props){
           platforms={e.genres}
           id={e.id}
           />
-          )}    
+          )}
+              
         </main>
         </div>
       )    

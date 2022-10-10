@@ -10,9 +10,7 @@ export const SEARCH_NAME = "SEARCH_NAME";
 export const SORT_ABC = "SORT_ABC";
 export const SORT_RATING = "SORT_RATING";
 export const FILTER_DB = "FILTER_DB";
-export const GET_PLATFORMS = "GET_PLATFORMS"
-
-
+export const GET_PLATFORMS = "GET_PLATFORMS";
 
 export const getAll = () => dispatch =>
 fetch("http://localhost:3001/videogames")
@@ -34,9 +32,14 @@ export function postCharacter(obj){
 export const getGameName = (name) => dispatch =>
 fetch(`http://localhost:3001/videogames?name=${name}`)
 .then(answer => answer.json())
-.then(a => { console.log(a["ahi_va_el_name"])
-    dispatch({type: GET_GAME_NAME, payload: a["ahi_va_el_name"]})
+.then(a => {
+    console.log(a)
+    dispatch({type: GET_GAME_NAME, payload: a.ahi_va_el_name})
+},error => {
+    console.log("error",error.ahi_va_el_name)
+    return 
 })
+
 
 export const getId = (id) => (dispatch) =>{
     console.log("action")  

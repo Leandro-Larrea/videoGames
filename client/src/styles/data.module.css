@@ -6,6 +6,7 @@
 
 .text{
     color: white;
+    margin: 0;
 }
 
 .loader{
@@ -27,8 +28,15 @@
     height: 5%;
     margin: 0;
     padding: 5px 2% 30px 2%;
-
+   
+    text-shadow: -2px -2px black; 
 }
+
+.title{
+
+    
+}
+
 .imgContainer{
     max-width: 100vw;
     position: relative;
@@ -69,34 +77,70 @@
 }
 
 .data{
-    display: flex;
+    display: grid;
     background-color: black;
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr;
+    
+}
+.dataExtraText{
+    color: white;
+}
+.textGenres{
+    display: block;
+    margin: 0;
 }
  .genres{
     display: flex;
-    flex-basis: 30%;
-    justify-content: space-around;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
     font-size: 1.2rem;
+    box-sizing: border-box;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 2px solid rgba(29, 83, 153, 0.801);
+    border-left: 2px solid rgba(29, 83, 153, 0.801);
 }
 .platforms{
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
     font-size: 1.2rem;
-    
+    color: white;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 2px solid rgba(29, 83, 153, 0.801);
+    border-left: 2px solid rgba(29, 83, 153, 0.801);
 }
+
+.rating{
+    position: absolute;
+    top: 0;
+    color: rgba(255, 244, 244, 0.801);
+    font-size: 100px;
+    right: 0;
+    font-family: 'Alkalami', serif;
+    text-shadow: -2px 4px black;
+}
+/* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
 
 .dataExtra{
-   min-width: 300px;
+    min-width: 300px;
     display: flex;
     justify-content: space-between;
-
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 2px solid rgba(29, 83, 153, 0.801);
+    border-left: 2px solid rgba(29, 83, 153, 0.801);
 }
-
-.platformsContainer{
-    display: flex;
-    justify-self: start;
-    gap: 30px;
+.dataExtraText{
+    margin: 0;
 }

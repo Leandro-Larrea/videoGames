@@ -14,7 +14,7 @@ const {
 
 const linksitos = async() =>{
     multiLink=[];
-    for(let i = 1; i < 6; i++){
+    for(let i = 6; i < 11; i++){
         multiLink.push(axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&&page=${i}`))
     }
     apiGames = await Promise.all(multiLink);
@@ -56,18 +56,17 @@ const getGames = async()=>{
 }
 
 const getName = async(name)=>{   
-    const apiGames = await linksitos()
-    let arrayNames = apiGames.filter(g =>{ 
-    return  g.name.toLowerCase().includes(name.toLowerCase())
-    }).map(e => e.name)
+    const apiDbGames = await getGames()
+    let arrayNames = apiDbGames.filter(g =>  g.name.toLowerCase().includes(name.toLowerCase())
+    )
     
-     const games = await Videogame.findAll({
-         where:{
-             name: {[Op.substring]: name}
-         }
-     })
-     console.log(games)
-     return arrayNames.concat(games)
+    //  const games = await Videogame.findAll({
+    //      where:{
+    //          name: {[Op.substring]: name}
+    //      }
+    //  })
+    if(arrayNames.length) return arrayNames
+    throw ("Game not found.")
 }
 
 const getPlatforms = async()=>{
@@ -85,12 +84,13 @@ router.get("/platforms",async(req,res)=>{
 
 router.get("/",async(req,res)=>{
     const {name} = req.query;
-    if(name){
+    if(name)try{
        let r = await getName(name)
        r.splice(15)
-       r.length?res.status(200).json({ahi_va_el_name: r}):res.status(404).send("game not found")
-       return
-    }  
+       return res.status(200).json({ahi_va_el_name: r})
+    }  catch(error){
+        return res.status(404).json({ahi_va_el_name: error})
+    }
     let apiInfo = await getGames();
     console.log("ruta");
     res.status(200).json({ahi_va_el_json: apiInfo});
@@ -100,7 +100,7 @@ const getId = async(id)=>{
     let game = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
     description = {
         name: game.data.name,
-        description:game.data.description,
+        description:game.data.description.replace(/<[^>]*>?/g, ""),
         genres: game.data.genres.map(e=> e.name),
         releaseDate: game.data.released,
         img: game.data["background_image"],
@@ -114,7 +114,14 @@ async function dbGame(idg){
     let descriptionDb = await Videogame.findAll({
         where: {
                 id: idg
-            }
+            },
+            include:{
+                model: Genre,
+                     attributes: ['name'],
+                     through:{
+                         attributes: []
+                             }  
+                    }     
     })
     if(descriptionDb.length)return descriptionDb[0]
     return Error ("fallido")

@@ -8,13 +8,12 @@
     box-sizing: border-box;
     margin: 0;
 }
+
 .navHover{
    padding-bottom: 5px;
    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(132, 177, 219));
    animation: moveBackground 1s infinite linear alternate ;
     background-size: 500%;
-    
-    
 }
 
 @keyframes moveBackground{

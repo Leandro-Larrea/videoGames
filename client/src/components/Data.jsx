@@ -27,23 +27,21 @@ return (
         <div className={style.imgContainer}>
             <h1 className={style.title}>{detail.name}</h1>
             <img className={style.img} src={detail.img?detail.img:kirby1}></img>
+            <p className={style.rating}>{detail.rating}/5</p>
             <div className={style.description}></div>                  
         </div>
         <div className={style.dataMain}>
             <p className={style.descriptionDown}>{detail.description}</p>
             <section className={style.data}>
-                <div className={style.platforms}>
+                <div className={style.platforms}>      
                     <p className={style.text}>Avaible on:</p>
-                    <div className={style.platformsContainer}>
                         {detail.platforms?.map((e,i) =>{return <p className={style.text} key={i}>{e}</p>})}
                     </div>
-                </div>
-                <div className={style.genres}>
-                    {detail.genres?.map((e,i) =>{return <p className={style.text} key={i}>{e}</p>})}
+                <div className={style.genres}> Genres:
+                    {detail.genres?.map((e,i) =>{return <p className={style.textGenres} key={i}>{e}</p>})}
                 </div>
                 <div className={style.dataExtra}>
-                    <p className={style.text}>{detail.releaseDate}</p>
-                    <p className={style.text}>{detail.rating}</p>
+                    <p className={style.dataExtraText}> Released at: {detail.releaseDate}</p>
                 </div>
             </section>
         </div>

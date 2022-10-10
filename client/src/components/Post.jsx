@@ -27,7 +27,7 @@ export default function Post(){
         name: "",
         genres:[],
         description:"",
-        releasedDate:"",
+        releaseDate:"",
         rating:0,
         platforms:[]
     }) 
@@ -68,28 +68,28 @@ export default function Post(){
     const create = (e)=>{
         e.preventDefault()
         if(Object.values(error).filter(e => e !== null).length) return alert("faltan datos")
-        dispatch(postCharacter(info))
+       let a = dispatch(postCharacter(info))
         setInfo({
             name: "",
             genres:[],
             description:"",
-            releasedDate:"",
+            releaseDate:"",
             rating:0,
             platforms:[]
         })
         document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
+        console.log("a", a)
     }
 
     function validation(){
         let e = {}
-        info.description.length < 100 || info.description[0] !== info.description[0].toUpperCase()? e.description = "Would you like to give me a descent description? thank u " : e.description = null;
+        info.description.length < 50 || info.description[0] !== info.description[0].toUpperCase()? e.description = "Would you like to give me a descent description? thank u " : e.description = null;
         !info.genres.length? e.genres ="required field": e.genres = null;
         info.platforms.length? e.platforms =  null : e.platforms = "U must specify 1 platform at least";
-        !info.rating? e.rating = "required field" : e.rating = null;   
-        !info.releasedDate? e.releasedDate = "required field": e.releaseDate =  null;
-        !info.name || info.name[0] !== info.name[0].toUpperCase()? e.name = "required field": e.name =  null;
+        info.rating < 1 || info.rating > 5? e.rating = "required field" : e.rating = null;   
+        !info.releaseDate? e.releaseDate = "required field": e.releaseDate =  null;
+        !/(\w*)\b([A-Z][a-z]\w*)\b(\w*)/.test(info.name) || info.name.length > 50? e.name = "required field": e.name =  null;
         setError({...e})
-
 
         // let n = name
         // switch (n) {
@@ -110,7 +110,7 @@ export default function Post(){
         //         if(value <= 0 || value > 5) setError({...error, [n] : "Insert a rating between 0 and 5"})
         //         else setError({...error, [n]:null})
         //         break;
-        //     case "releasedDate":
+        //     case "releaseDate":
         //         if(!n) setError({...error, [n] : "Ppl wanna know when the fucking game was created"})
         //         else setError({...error, [n]:null})
         //         break;
@@ -129,7 +129,7 @@ export default function Post(){
                         </div>
                         <div className={style.item}>
                             <label className={style.label}>Released data:</label>
-                                <input name="releasedDate" onChange={handleChange} className={error.releasedDate? style.error:style.input} type="text" value={info.releasedDate}>
+                                <input name="releaseDate" onChange={handleChange} className={error.releaseDate? style.error:style.input} type="text" value={info.releaseDate}>
                                 </input>
 
                         </div>
