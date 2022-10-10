@@ -45,7 +45,7 @@ export function Home(props){
           <Card key={e.id}
           name={e.name}
           img={e.img}
-          platforms={e.genres}
+          genres={e.genres}
           id={e.id}
           />
           )}

@@ -12,7 +12,7 @@ export function Card(props){
             <div className={style.imgContainer}>
                 <img className={style.img} src={props.img? props.img: optional} alt="Notimg"></img>
             </div>
-            <div className={style.platforms}>{props.platforms?.map((e,i) => <div key={i}>{e}</div>)}</div>  
+            <div className={style.genres}>{props.genres?.map((e,i) => <div key={i}>{e}</div>)}</div>  
         </div>
         </div>
         </NavLink>)

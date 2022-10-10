@@ -17,8 +17,8 @@
 }
 
 .button{  
-   background-color: rgba(0,0,0, 0.4);
-   border: 5px solid rgba(255,255,255, 0.5);
+   background-color: rgba(0,0,0, 0.8);
+   border: 1px solid  rgb(22, 96, 194);;
    border-radius: 5px;
    width: 150px;
    height: 46px;
@@ -26,14 +26,14 @@
    font-size: 20px;
    position: absolute;
    cursor: pointer;
-   box-shadow: 0 0 15px rgba(255,255,255, 0.5);
+   box-shadow: 0 0 5px rgba(255,255,255, 0.5);
    transition:  0.3s box-shadow ;
 }
 
 .button:hover{
     background-color: rgba(0,0,0, 0.9);
     color: white;
-    border-color: white;
+    border-color:rgba(255,255,255, 0.5);
     box-shadow: 0 0 30px rgba(255,255,255, 0.9);
     transform: scale(1.2);   
 }

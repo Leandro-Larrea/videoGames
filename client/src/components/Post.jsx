@@ -6,7 +6,8 @@ import { connect} from "react-redux";
 import { getGenres } from "../redux/actions";
 import { postCharacter } from "../redux/actions";
 import { getPlatforms } from "../redux/actions";
-import ok from "../images/ok-icon.png"
+import ok from "../images/ok-icon.png";
+import kirby from "../images/loader2.gif"
 
 
 export default function Post(){
@@ -67,7 +68,7 @@ export default function Post(){
 
     const create = (e)=>{
         e.preventDefault()
-        if(Object.values(error).filter(e => e !== null).length) return alert("faltan datos")
+        if(Object.values(error).filter(e => e !== null).length) return alert("Field each field but image")
        let a = dispatch(postCharacter(info))
         setInfo({
             name: "",
@@ -77,18 +78,19 @@ export default function Post(){
             rating:0,
             platforms:[]
         })
+        alert("The game has been created succesfully")
         document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
         console.log("a", a)
     }
 
     function validation(){
         let e = {}
-        info.description.length < 50 || info.description[0] !== info.description[0].toUpperCase()? e.description = "Would you like to give me a descent description? thank u " : e.description = null;
-        !info.genres.length? e.genres ="required field": e.genres = null;
-        info.platforms.length? e.platforms =  null : e.platforms = "U must specify 1 platform at least";
-        info.rating < 1 || info.rating > 5? e.rating = "required field" : e.rating = null;   
-        !info.releaseDate? e.releaseDate = "required field": e.releaseDate =  null;
-        !/(\w*)\b([A-Z][a-z]\w*)\b(\w*)/.test(info.name) || info.name.length > 50? e.name = "required field": e.name =  null;
+        info.description.length < 50 || info.description[0] !== info.description[0].toUpperCase()? e.description = "(Description must be longer than 50 characters and begin with capitalize)" : e.description = null;
+        !info.genres.length? e.genres ="(U must mark 1 genre at least)": e.genres = null;
+        info.platforms.length? e.platforms =  null : e.platforms = "(U must mark 1 platform at least)";
+        info.rating < 1 || info.rating > 5? e.rating = "(Grater than 0 lower than 5)" : e.rating = null;   
+        !/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(info.releaseDate)? e.releaseDate = "(Use the way yyyy/mm/dd)": e.releaseDate =  null;
+        !/(\w*)\b([A-Z][a-z]\w*)\b(\w*)/.test(info.name) || info.name.length > 50? e.name = "(First letter must be capitalize)": e.name =  null;
         setError({...e})
 
         // let n = name
@@ -119,22 +121,25 @@ export default function Post(){
         // }
     }
 
-    if(genresData.length > 0){
+    if(genresData.length && platforms.length){
        return (<main className={style.main}>
                     <form className={style.form} onSubmit={create}>
                         <div className={style.item}>
                             <label  htmlFor="name"  className={style.label}>Name:</label>
+                            <p className={error.name?style.errorT:style.ok}>{error.name}</p>
                                 <input name="name" className={error.name? style.error:style.input} id="name"type="text" onChange={handleChange} value={info.name}>
                                 </input>      
                         </div>
                         <div className={style.item}>
-                            <label className={style.label}>Released data:</label>
+                            <label className={style.label}>Released:</label>
+                            <p className={error.releaseDate?style.errorT:style.ok}>{error.releaseDate}</p>
                                 <input name="releaseDate" onChange={handleChange} className={error.releaseDate? style.error:style.input} type="text" value={info.releaseDate}>
                                 </input>
 
                         </div>
                         <div className={style.item}>
                             <label className={style.label}>Rating:</label>
+                            <p className={error.rating?style.errorT:style.ok}>{error.rating}</p>
                                 <input name="rating" onChange={handleChange} className={error.rating? style.error:style.input} type="number" value={info.rating}>
                                 </input>
 
@@ -147,11 +152,14 @@ export default function Post(){
                         </div>
                         <div className={style.itemDescription}>
                             <label className={style.label}>Description:</label>
+                            <p className={error.description?style.errorT:style.ok}>{error.description}</p>
                                 <textarea value={info.description} name="description" onChange={handleChange} className={error.description?style.error:style.input}>
                                 </textarea>
                         </div>
                         <div  className={style.h2Container}>
-                        <h2>Genres</h2><img src={ok} className={error.genres? style.errorImg: style.ok}></img>
+                        <h2>Genres</h2>
+                        <p className={error.genres?style.errorT:style.ok}>{error.genres}</p>
+                        <img src={ok} className={error.genres? style.errorImg: style.ok}></img>
                         </div>
                         <div className={style.checksContainer}>
                             {genresData.length && genresData.map((g,i) => {
@@ -166,7 +174,9 @@ export default function Post(){
                             }
                         </div> 
                         <div  className={style.h2Container}>
-                        <h2>Platforms</h2><img src={ok} className={error.platforms? style.errorImg: style.ok}></img>
+                        <h2>Platforms</h2>
+                        <p className={error.platforms?style.errorT:style.ok}>{error.platforms}</p>
+                        <img src={ok} className={error.platforms? style.errorImg: style.ok}></img>
                         </div>
                         <div className={style.checksContainer}>
                             {platforms.length && platforms.map((g,i) => {
@@ -184,7 +194,7 @@ export default function Post(){
                     </form>
             
                 </main>)}
-        return <h1>esperando</h1>
+        return <div className={style.loaderContainer}><img className={style.loader} src={kirby}></img></div>
     }
 
 

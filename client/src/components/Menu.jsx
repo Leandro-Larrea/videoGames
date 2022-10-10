@@ -26,6 +26,7 @@ const abc = (e)=>{
 }
 
 return (<div className={style.container}>
+            <p className={style.sortText}>Sort By</p>
             <select onChange={sort}>
                 <option value="Rating">Rating</option>
                 <option value="ascending">Ascending</option>

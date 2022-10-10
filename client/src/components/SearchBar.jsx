@@ -48,6 +48,7 @@ export function SearchBar(){
 
     return(
             <div className={style.main}>
+                <p className={style.sortText}>Filter By</p>
                 <div className={style.selectContainer}>
                     <select className={style.select} onChange={filtrar}>
                         <option className={style.option}>Todos</option>

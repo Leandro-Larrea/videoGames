@@ -15,9 +15,12 @@ export function Nav(){
                     {/* <button>Home</button>
                     <button>About</button> */}
                     <Menu></Menu>
-                    <div className={style.buttonHover}>
-                        <button className={style.button}><NavLink className={style.link} to="/post">Post Game</NavLink ></button>
-                    </div>
+                    
+                    <NavLink className={style.link} to="/post">
+                        <button className={style.button}>
+                            Post Game
+                        </button>
+                    </NavLink >
                 </div>
             </nav>
         </div>

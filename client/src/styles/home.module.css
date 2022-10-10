@@ -5,6 +5,8 @@
     justify-content: center;
     background-color: black;
     min-height: 95vh;
+    margin-bottom: 30px;
+    box-sizing: border-box;
 }
 
 .notFoundContainer{

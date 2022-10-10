@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../styles/landing.module.css"
 import { Component } from "react";
-import img from "../images/giphy.gif"
+import img from "../images/knight.jpg"
 import { Link } from "react-router-dom";
 
 
