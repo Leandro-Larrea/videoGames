@@ -37,10 +37,4 @@ module.exports = (sequelize) => {
     },
   });
 };
-// [ ] Videojuego con las siguientes propiedades:
-// - ID: * No puede ser un ID de un videojuego ya existente en la API rawg
-// - Nombre *
-// - Descripción *
-// - Fecha de lanzamiento
-// - Rating
-// - Plataformas *
+

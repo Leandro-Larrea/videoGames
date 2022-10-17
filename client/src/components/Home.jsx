@@ -15,10 +15,14 @@ export function Home(props){
     const games = useSelector(state => state.filterGames);
 
     useEffect(()=>{
-        console.log("useEffect andando")
+        if(!games.length){
         dispatch(getAll())
-        dispatch(genresFilter("Todos"))
+        dispatch(genresFilter("Todos"))}
     },[]);
+
+    useEffect(()=>{
+      setCurrentPage(1)
+    },[games])
 
     const [currentPage, setCurrentPage] = useState(1)
     const [gamesPerPage, setGamePerPage] = useState(15)
@@ -34,13 +38,12 @@ export function Home(props){
     const fcUpdate = (x)=>{
       setCurrentPage(x)
     }
-        console.log(games)
         if(games.length === 0){
         return <div className={style.loaderContainer}> <img className={style.loader} src={loader2}></img></div>}
         return (<div>
-        <Pages juegos={games.length} juegosPorPagina={gamesPerPage} actualizar={fcUpdate}/>
+        <Pages juegos={games.length} juegosPorPagina={gamesPerPage} actualizar={fcUpdate} currentPage={currentPage}/>
         <main className={style.home}>
-        
+          
           {renderGames?.map(e =>  
           <Card key={e.id}
           name={e.name}

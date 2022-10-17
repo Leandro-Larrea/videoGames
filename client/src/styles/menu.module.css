@@ -1,9 +1,45 @@
-.container{
+.hover{
+    padding: 0 0px 5px 0px;
+    width: 100%;
+    background-color: red;
     display: flex;
+    flex-direction: column;
     align-content: center;
     align-items: center;
-    min-height: 100%;
+    position: absolute;
+    transform: translateY(100px);
+    z-index: 10;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-bottom: 5px;
+    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(132, 177, 219));
+    animation: moveBackground 1s infinite linear alternate ;
+    background-size: 500%;
+}
+.hoverOff{
+    display: none;
+}
+
+/* @keyframes moveBackground{
+    0% {background-position-x: left;} 
+    100%{background-position-x: right;} 
+} */
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
     gap: 10px;
+    background-color: black;
+    z-index: 10;
+    padding: 15px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.containerOff{
+    display: none;
 }
 
 select{

@@ -11,7 +11,6 @@ export function Data(props){
     
     const id = props.match.params.id;
     const dispatch = useDispatch()
-    console.log(id)
 
     useEffect(()=>{     
         dispatch(getId(id))
@@ -19,7 +18,6 @@ export function Data(props){
     },[]);
 
     const detail = useSelector(state => state.gameDetail)
-    console.log("esto es el detail",detail)
      if(!detail.description){return <div className={style.loaderContainer}><img className={style.loader} src={kirby}></img></div>}   
 return (
 

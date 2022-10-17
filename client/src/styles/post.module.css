@@ -9,6 +9,14 @@
 
 }
 
+.title{
+    color: white;
+    border-bottom: 2px solid rgba(71, 136, 216, 0.7);
+    width: 100%;
+    text-align: center;
+    grid-column: span 2;
+}
+
 .form{    
     padding: 1rem;
     box-sizing: border-box;
@@ -20,23 +28,20 @@
     row-gap: 30px;
     justify-items:center ;
     max-width: 800px;
-    border-left: 2px solid rgba(71, 136, 216, 0.7);
-    border-bottom: 3px solid rgba(71, 136, 216, 0.7);
-    box-shadow: 5px 5px 10px white;
+    background: linear-gradient(rgba(0, 120, 170, 1), rgba(0,0,0,1) );;
+    border: 3px solid rgba(71, 136, 216, 0.7);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px white;
 }
 
-/* .item{
-    grid-column: span 2;
-} */
-
 .item{
-    
     display: grid;
     grid-template-columns: 1fr ;
     align-items: center;
     position: relative;
     height: 65px;
 }
+
 p{
     margin: 0;
 }
@@ -122,6 +127,7 @@ label{
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: space-between;
+    
 }
 
 .submit{
@@ -140,6 +146,7 @@ label{
     transform: scale(1.1);
     box-shadow: 0px 0px 10px rgba(254, 255, 254, 0.918); 
 }
+
 .h2Container{
     display: flex;
     justify-content: center;
@@ -149,6 +156,7 @@ label{
     width: 100%;
     
 }
+
 .h2Container p{
     position: absolute;
     margin: 0;
@@ -156,15 +164,18 @@ label{
     font-size: 15px;
     right: -130px;
 }
+
 .errorImg{
     display: none;
     justify-self: left;
 }
+
 .ok{
     display: inline;
     width: 1rem;
     height: 1rem;
 }
+
 h2{
     margin: 0;
     color:white

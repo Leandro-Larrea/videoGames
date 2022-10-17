@@ -1,5 +1,5 @@
 import {SORT_ABC, SORT_RATING,SEARCH_NAME, FILTER, CLEAN, GET_ALL, GET_GAME_DETAIL,
-         GET_GAME_NAME, GET_GENRES, GET_ID, FILTER_DB, GET_PLATFORMS} from "./actions.js"
+         GET_GAME_NAME, GET_GENRES, FILTER_DB, GET_PLATFORMS} from "./actions.js"
 
 const initialState ={
     games:[],
@@ -54,7 +54,7 @@ export function rootReducer(state = initialState, action){
                 filterGames: s
         }
         case CLEAN:
-            console.log("cleaning???")
+
             return{
                 ...state,
                 gameDetail: {}
@@ -67,7 +67,6 @@ export function rootReducer(state = initialState, action){
      
         case SORT_RATING:
             if(!Array.isArray(state.filterGames)) state.filterGames = [...state.games]
-            console.log(state.filterGames)
             let a = action.payload === "ascending"?state.filterGames.sort((a,b) => a.rating - b.rating):
             state.filterGames.sort((a,b) => b.rating - a.rating);
             return{

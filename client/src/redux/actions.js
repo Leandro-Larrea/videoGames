@@ -15,38 +15,34 @@ export const GET_PLATFORMS = "GET_PLATFORMS";
 export const getAll = () => dispatch =>
 fetch("http://localhost:3001/videogames")
 .then(answer => answer.json())
-.then(a => { console.log(a)
+.then(a => { 
     dispatch({type: GET_ALL, payload: a["ahi_va_el_json"]})
 })
 
-
 export function postCharacter(obj){
-    console.log("aca va obj", obj)
     return async function (dispatch){
         const r = await axios.post(`http://localhost:3001/videogames`, obj);
-        console.log(r);
         return r
     }
 }
 
-export const getGameName = (name) => dispatch =>
-fetch(`http://localhost:3001/videogames?name=${name}`)
-.then(answer => answer.json())
-.then(a => {
-    console.log(a)
-    dispatch({type: GET_GAME_NAME, payload: a.ahi_va_el_name})
-},error => {
-    console.log("error",error.ahi_va_el_name)
-    return 
+export const getGameName = (name) => { return async (dispatch) =>{
+return await axios.get(`http://localhost:3001/videogames?name=${name}`)
+.then(a =>{
+    dispatch({type:GET_GAME_NAME, payload: a.data.ahi_va_el_name})
 })
+.catch(error => {
+                dispatch({type:GET_GAME_NAME, payload: error.response.data.ahi_va_el_name}) 
+            }
+        )
+    }
+}
 
-
-export const getId = (id) => (dispatch) =>{
-    console.log("action")  
+export const getId = (id) => (dispatch) =>{  
 return fetch(`http://localhost:3001/videogames/${id}`)
 .then(answer => answer.json())
 .then(a => {
-    console.log("action idgame",a)
+    
     dispatch({type: GET_GAME_DETAIL, payload: a.data})   
     })
 }
@@ -67,12 +63,12 @@ export const genresFilter = (genre) => dispatch =>{
     dispatch({type: FILTER, payload: genre}) 
 }
 
+
 export const sortByAbc = (t) => dispatch =>{
     dispatch({type: SORT_ABC, payload: t})      
 }
 
 export const sortByRating = (t) => dispatch =>{
-    console.log("al action si llegamos")
     dispatch({type: SORT_RATING, payload: t})      
 }
 
@@ -80,9 +76,10 @@ export const clean = ()=> (dispatch) =>{
     dispatch({type: CLEAN})
 }
 
-export const filterDb = (t) => dispatch =>{
-    console.log("al redux si")
-   return dispatch({type: FILTER_DB, payload: t})}
+ export const filterDb = (t) => dispatch =>{
+    return dispatch({type: FILTER_DB, payload: t})}
+
+
 
 export const getPlatforms = () => dispatch =>
     fetch("http://localhost:3001/videogames/platforms")
@@ -92,19 +89,3 @@ export const getPlatforms = () => dispatch =>
     })
 
 
-// - [ ] __GET /videogames__:
-// - Obtener un listado de los videojuegos
-// - Debe devolver solo los datos necesarios para la ruta principal
-// - [ ] __GET /videogames?name="..."__:
-// - Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
-// - Si no existe ningún videojuego mostrar un mensaje adecuado
-// - [ ] __GET /videogame/{idVideogame}__:
-// - Obtener el detalle de un videojuego en particular
-// - Debe traer solo los datos pedidos en la ruta de detalle de videojuego
-// - Incluir los géneros asociados
-// - [ ] __POST /videogames__:
-// - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
-// - Crea un videojuego en la base de datos, relacionado a sus géneros.
-// - [ ] __GET /genres__:
-// - Obtener todos los tipos de géneros de videojuegos posibles
-// - En una primera instancia deberán traerlos desde rawg y guardarlos en su propia base de datos y luego ya utilizarlos desde allí

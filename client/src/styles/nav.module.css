@@ -1,23 +1,24 @@
 .nav{
     display: flex;
-    padding: 5px;
-    height: 50px;
+    padding: 0 2%;
+    height: 3.1rem;
     width: 100%;
     background-color: black;
     justify-content: space-between;
     box-sizing: border-box;
     margin: 0;
+    z-index: 100;
 }
 
 .navHover{
-   padding-bottom: 5px;
-   background: linear-gradient(90deg,rgb(0, 72, 140), rgb(132, 177, 219));
-   animation: moveBackground 1s infinite linear alternate ;
+    padding-bottom: 5px;
+    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(132, 177, 219));
+    animation: moveBackground 1s infinite linear alternate ;
     background-size: 500%;
 }
 
 @keyframes moveBackground{
-     0% {background-position-x: left;} 
+    0% {background-position-x: left;} 
     100%{background-position-x: right;} 
 }
 
@@ -26,32 +27,120 @@
     width: 60px;
     height: 50px;
     margin-left: 10px;
+    transition: 0.4s;
+    animation: rotateJ 2s infinite linear alternate;
+    z-index: 10;
+}
+
+ /* @keyframes rotateJ{
+    0% {transform: rotate(180deg);} 
+    25%{transform: scale(10);}
+    50% {transform: translate(1000%,1000%)}
+    75%{transform: translate(000%,1000%)}
+    75%{transform: scale(10);}
+    100%{transform: scale(1);}
+    
+}   */
+
+.logo:hover{
+    transform:rotate(180deg);
 }
 
 .buttons{
-    flex-basis: 30%;
     display: flex;
     font-size: 20px;
-    gap: 10px;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+.navButton{
+    background-color: transparent;
+    color: white;
+    font-size: 1.2rem;
+    height: 100%;
+    text-align: center;
+    padding: 8px;
+    transition: 0.2s;
+}
+
+.position{
+    position: relative;
+    width: 140px;
+    height: 100%;
     
 }
 
-.button{
-    cursor: pointer;
-    background-color: transparent;
-    color: white;
-    font-size: 1rem;
-    font-family:'Arial Narrow';
-    height: 100%;
-    text-align: center;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 100, 170, 1);
+.positionOn{
+    background: white;
+    color: black;
 }
 
-.button:hover{
-    transform: scale(1.1);
+.sortContainerFilter{
+    text-align: center;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    align-items: center;
+    position: absolute;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    width: 140px;
+    min-height: 100%;
+    z-index: 20;
+}
+
+.sortContainerFilterOn{
+    text-align: center;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    align-items: center;
+    color: black;
+    position: absolute;
+    border: 3px solid  rgba(0, 108, 170, 0.76);
+    border-bottom:none;
     box-shadow: 0 0 10px white;
+    width: 142px;
+    min-height: 100%;
+    z-index: 20;
+    box-sizing: border-box;
+}
+
+.aOn{
+    color:black;
+}
+
+.sortContainerFilter:hover{
+    background-color: rgba(0, 108, 170, 1);
+}
+
+.sortContainer{
+    text-align: center;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid white;
+    width: 140px;
+    min-height: 100%;
+}
+.sortText{
+    cursor: pointer;
+    color: white;
+    min-width:130px;
+}
+
+
+.sortContainer:hover{
+    background:  rgba(0, 108, 170, 1);
 }
 /* .buttonHover{
     border-radius: 10px;
@@ -65,11 +154,7 @@
     transition: 0.2s;
 } */
 
-.link{
-    text-decoration: none;
-    color: white;
 
-}
 
 
 

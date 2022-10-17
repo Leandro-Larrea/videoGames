@@ -11,6 +11,8 @@ function App() {
   return (
     <div className={style.app}>
       <Route path="/menu" component={Nav}/>
+      <Route path="/post" component={Nav}/>
+      <Route path="/data" component={Nav}/>
       <Route exact path="/menu" component={Home}/>
       <Route path="/data/:id" component={Data}/>
       <Route exact path="/" component={Landing}/>
