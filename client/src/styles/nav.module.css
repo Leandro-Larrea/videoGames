@@ -1,13 +1,13 @@
 .nav{
     display: flex;
-    padding: 0 2%;
     height: 3.1rem;
     width: 100%;
-    background-color: black;
     justify-content: space-between;
     box-sizing: border-box;
     margin: 0;
     z-index: 100;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 .navHover{
@@ -21,6 +21,15 @@
     0% {background-position-x: left;} 
     100%{background-position-x: right;} 
 }
+
+.sortFilters{
+    display: flex;
+   gap: 5px;
+    margin: 0 5px;
+    box-sizing: border-box;
+}
+
+
 
 .logo{
    background-color: transparent;
@@ -85,8 +94,7 @@
     background-color: black;
     align-items: center;
     position: absolute;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    cursor: pointer;
     width: 140px;
     min-height: 100%;
     z-index: 20;
@@ -103,21 +111,34 @@
     align-items: center;
     color: black;
     position: absolute;
-    border: 3px solid  rgba(0, 108, 170, 0.76);
     border-bottom:none;
     box-shadow: 0 0 10px white;
-    width: 142px;
+    width: 140px;
     min-height: 100%;
     z-index: 20;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .aOn{
     color:black;
+    font-size: 1.2rem;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.aOff{
+    font-size: 1.1rem;
+    height: 100%;
+    width: 100%;
+    
+
 }
 
 .sortContainerFilter:hover{
-    background-color: rgba(0, 108, 170, 1);
+    background-color: rgb(45, 106, 219);
+    box-shadow: 0 0 15px white;
 }
 
 .sortContainer{
@@ -128,31 +149,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-left: 1px solid white;
     width: 140px;
     min-height: 100%;
+    
 }
 .sortText{
     cursor: pointer;
     color: white;
-    min-width:130px;
+    width: 100%;
+    height: 100%;
 }
+
 
 
 .sortContainer:hover{
-    background:  rgba(0, 108, 170, 1);
+   transform: scale(1.1);
 }
-/* .buttonHover{
-    border-radius: 10px;
-    box-sizing: border-box;
-    min-height: 100%;
+
+.margin{
     display: flex;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
     align-items: center;
-    padding: 4px;
-    background: transparent;
-    transition: 0.2s;
-} */
+    background-color: black;
+    padding: 0 2vw;
+}
 
 
 

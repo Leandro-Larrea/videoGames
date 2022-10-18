@@ -29,26 +29,30 @@ function filtrarDb(e){
         let t = e.target.value
         dispatch(filterDb(t))
     }
-
-   
+    if(props.genres){
     return (<div className={props.b === 1? style.hover: style.hoverOff}>
                 <div className={style.container}>
-                    <div className={style.selectContainer}>
-                        
+                    <div className={style.selectContainer}>   
                         <button className={style.option}  onClick={filtrar} value="Todos">Todos</button>
                                 {
                                 genres?.map((e,i)=> <button key={i} onClick={filtrar} value ={e.name}className={style.option}>{e.name}</button>)
                                 }
-                        
-                    </div>
-                    <div className={style.selectContainer}>
-                        <select className={style.select} onChange={filtrarDb}>
-                            <option className={style.option} value="todos">Todos</option>
-                            <option className={style.option} value="db">Posted</option>
-                            <option className={style.option} value="api">Api</option>
-                        </select>
                     </div>
                 </div>
-            </div>
-            )
+            </div> 
+            )        
+        }
+    if(props.origin){
+        return(
+            <div className={props.c === 1? style.hoverOrigin: style.hoverOriginOff}>
+                <div className={style.container}>
+                    <div className={style.selectContainer}>   
+                        <button className={style.option} onClick={filtrarDb} value="todos">Todos</button>
+                        <button className={style.option} onClick={filtrarDb} value="db">Data base</button>
+                        <button className={style.option} onClick={filtrarDb} value="api">Api</button>
+                    </div>
+                </div>
+            </div> 
+        )       
+    }
 }

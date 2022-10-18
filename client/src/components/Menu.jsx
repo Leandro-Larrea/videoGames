@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { sortByRating, sortByAbc } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import style from "../styles/menu.module.css"
@@ -8,6 +8,22 @@ export function Menu(props){
 
 const dispatch = useDispatch()
 const history = useHistory()
+const [sortRating, setSortRating] = useState(0)
+const [sortAbc, setSortAbc] = useState(0)
+
+
+useEffect(()=>{
+    setSortRating(0)
+    setSortAbc(0)
+},[props.a])
+
+function fcSortRating(){ 
+    sortRating === 0? setSortRating(1): setSortRating(0)
+}
+
+function fcSortAbc(){
+    sortAbc === 0? setSortAbc(1): setSortAbc(0)
+}
 
 const sort = (e)=>{
     let t = e.target.value
@@ -26,18 +42,25 @@ const abc = (e)=>{
 
 return (<div className={props.a === 1?style.hover: style.hoverOff}>
             <div className={style.container} >
-                    <a value="Rating">Rating</a>
-                        <div className={style.sorts}>
-                            <button value="ascending">Ascending</button>
-                            <button value="descending">Descending</button>
+                <div className={style.selectContainer}>
+                <div className={sortRating === 0?style.relleno: style.rellenoOn}  onClick={fcSortRating}>
+                    <a className={style.sortText}>Rating</a>
+                    </div>
+                        <div className={sortRating === 0?style.sorts: style.sortsOn}>
+                            <button value="ascending" className={style.button} onClick={sort}>Ascending</button>
+                            <button value="descending" className={style.button} onClick={sort}>Descending</button>
                         </div>
-                    <a>Abc</a>
-                        <div className={style.sorts}>
-                            <button value="normal">A-Z</button>
-                            <button value="reverse">Z-A</button>
-                        </div>
+                </div>
+                <div className={style.selectContainer}>
+                    <div className={sortAbc === 0?style.relleno: style.rellenoOn}  onClick={fcSortAbc}>
+                    <a className={style.sortText}>ABC</a>
+                    </div>
+                    <div className={sortAbc === 0?style.sorts: style.sortsOn}>
+                        <button value="normal" className={style.button} onClick={abc}>A-Z</button>
+                        <button value="reverse" className={style.button} onClick={abc}>Z-A</button>
+                    </div>
+                </div>
             </div>
         </div>
         )
-
 }
