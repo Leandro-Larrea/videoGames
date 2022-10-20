@@ -30,17 +30,21 @@ export function Nav(props){
         <div className={style.navHover}>
             <nav className={style.nav}>
                 <div className={style.margin}>
-                    <img className={style.logo} src={joystick}/>
+                    <div className={style.marginQuery}>
+                        <div className={style.rellenoBar}></div>
+                        <img className={style.logo} src={joystick}/>
+                        <SearchBar match = {props.match}/>
+                    </div>
                 </div>
-                <SearchBar match = {props.match}/>
                 <div className={style.sortFilters}>
                     <div className={style.position}>
+                    <div className={style.positionRellenoL}></div>
                         <div onClick={ff} className={b === 0?style.sortContainerFilter: style.sortContainerFilterOn}>
                             <div  className={style.sortText}>
                                 <a className={b === 1? style.aOn: style.aOff}>Genres Filter</a>
                             </div>
                         </div>
-                        <Filter b={b} match={props.match} genres={true}></Filter>
+                        <Filter  b={b} match={props.match} genres={true}></Filter>
                     </div>
                     <div className={style.position}>
                         <div onClick={fff} className={c=== 0?style.sortContainerFilter: style.sortContainerFilterOn}>
@@ -57,30 +61,31 @@ export function Nav(props){
                                     <a className={a === 1? style.aOn: style.aOff}>Sort</a>
                                 </div>
                             </div>
-                            <Menu a={a} match={props.match}></Menu>
-                        </div>
-                        <div className={style.position}>
-                            <div className={style.sortContainerFilter}>
-                                <div  className={style.sortText}>
-                                    <NavLink className={style.sortContainer} to="/post">                     
-                                        <a className={style.navButton}> Post Game </a>
-                                    </NavLink >
-                                </div>
+                        <Menu a={a} match={props.match}></Menu>
+                    </div>
+                    <div className={style.position}>
+                        <div className={style.sortContainerFilter}>
+                            <div  className={style.sortText}>
+                                <NavLink className={style.sortContainer} to="/post">                     
+                                    <p className={style.navButton}> Post Game </p>
+                                </NavLink >
                             </div>
                         </div>
-                </div>
-                
-                    {/* <button>Home</button>
-                    <button>About</button> */}
-                    
-                    <div className={style.buttons}>
-                        
-                    <div className={style.margin}>   
-                    <NavLink className={style.sortContainer} to="/menu">
-                        <a className={style.navButton}> Home </a>
-                    </NavLink >
                     </div>
+                    <div className={style.position}>
+                        <div className={style.sortContainerFilter}>
+                            <div  className={style.sortText}>
+                                <NavLink className={style.sortContainer} to="/menu">
+                                    <p className={style.navButton}> Home </p>
+                                </NavLink >
+                            </div>
+                        </div>
+                        <div className={style.positionRellenoR}></div>
+                    </div>
+                    
+                    
                 </div>
+               
             </nav>
         </div>
     )

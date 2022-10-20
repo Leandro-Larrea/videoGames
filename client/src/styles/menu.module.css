@@ -81,6 +81,7 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+    border-top: 1px solid black;
     box-shadow: 0 0 10px white;
     border-right: none;
     border-left: none;

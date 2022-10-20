@@ -1,18 +1,17 @@
 .nav{
     display: flex;
-    height: 3.1rem;
     width: 100%;
     justify-content: space-between;
     box-sizing: border-box;
     margin: 0;
-    z-index: 100;
+    z-index: 10;
     font-family: 'Roboto', sans-serif;
-
+    position: relative;
 }
 
 .navHover{
     padding-bottom: 5px;
-    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(132, 177, 219));
+    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(207, 219, 229));
     animation: moveBackground 1s infinite linear alternate ;
     background-size: 500%;
 }
@@ -24,12 +23,11 @@
 
 .sortFilters{
     display: flex;
-   gap: 5px;
+    gap: 5px;
     margin: 0 5px;
     box-sizing: border-box;
+    height: 3.1rem;
 }
-
-
 
 .logo{
    background-color: transparent;
@@ -37,19 +35,18 @@
     height: 50px;
     margin-left: 10px;
     transition: 0.4s;
-    animation: rotateJ 2s infinite linear alternate;
+    animation: rotateJ 4s infinite linear alternate;
     z-index: 10;
 }
 
- /* @keyframes rotateJ{
+  /* @keyframes rotateJ{
     0% {transform: rotate(180deg);} 
     25%{transform: scale(10);}
     50% {transform: translate(1000%,1000%)}
     75%{transform: translate(000%,1000%)}
-    75%{transform: scale(10);}
+    75%{transform: scale(20);}
     100%{transform: scale(1);}
-    
-}   */
+}    */
 
 .logo:hover{
     transform:rotate(180deg);
@@ -65,21 +62,27 @@
 .navButton{
     background-color: transparent;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
     height: 100%;
     text-align: center;
-    padding: 8px;
     transition: 0.2s;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .position{
     position: relative;
-    width: 140px;
-    height: 100%;
-    
+    width: 130px;
+    height: 100%; 
 }
 
 .positionOn{
+    width: 130px;
+    height: 100%; 
     background: white;
     color: black;
 }
@@ -89,13 +92,13 @@
     position: relative;
     text-align: center;
     text-decoration: none;
+    background-color: black;
     display: flex;
     justify-content: center;
-    background-color: black;
     align-items: center;
     position: absolute;
     cursor: pointer;
-    width: 140px;
+    width: 100%;
     min-height: 100%;
     z-index: 20;
 }
@@ -113,7 +116,7 @@
     position: absolute;
     border-bottom:none;
     box-shadow: 0 0 10px white;
-    width: 140px;
+    width: 100%;
     min-height: 100%;
     z-index: 20;
     box-sizing: border-box;
@@ -122,18 +125,14 @@
 
 .aOn{
     color:black;
-    font-size: 1.2rem;
     height: 100%;
     width: 100%;
-    
 }
 
 .aOff{
-    font-size: 1.1rem;
+    font-size: 1rem;
     height: 100%;
     width: 100%;
-    
-
 }
 
 .sortContainerFilter:hover{
@@ -149,21 +148,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 140px;
+    width: 130px;
     min-height: 100%;
-    
 }
 .sortText{
     cursor: pointer;
     color: white;
     width: 100%;
     height: 100%;
-}
-
-
-
-.sortContainer:hover{
-   transform: scale(1.1);
+    display: flex;
+    justify-content: center;
 }
 
 .margin{
@@ -171,8 +165,77 @@
     width: 100%;
     height: 100%;
     align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(132, 177, 219));
+    animation: moveBackground 1s infinite linear alternate ;
+    background-size: 500%;
+    position: relative;
+    z-index: 50;
+}
+
+.marginQuery{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-start;
     background-color: black;
     padding: 0 2vw;
+    position: relative;
+    z-index: 50;
+}
+
+@media screen and (max-width: 1092px){
+    .nav{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sortFilters{
+        width: 100%;
+        justify-content: center;
+        position: relative;
+    }
+
+
+
+    /* .sortFilters:before{
+        content: "";
+       width: 130px;
+       left: -2px;
+       margin: 0 2px;
+       position: relative;
+        background-color: black;
+    }
+
+     */
+
+    .marginQuery{
+        margin-bottom: 5px;
+        justify-content: center;
+    }
+    .margin{
+        padding: 0;
+    }
+
+    .positionRellenoR, .positionRellenoL{
+        background-color: black;
+        height: 100%;
+        width: 300px;
+        position: absolute;
+        background-color: black;
+        z-index: 300;
+    }
+
+    .positionRellenoR{
+        right: -305px;
+    }  
+
+    .positionRellenoL{
+        left: -305px;
+    }  
+    
+    
 }
 
 

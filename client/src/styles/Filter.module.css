@@ -43,7 +43,6 @@
     transition: 1s;
  }
         
-
 .hoverOff{
     width: 100%;
     gap: 10px;
@@ -60,11 +59,8 @@
     transition: 1s;
 }
 
-
-
 .option:hover{
     background:rgb(45, 106, 219);
-    transform: scaleY(1.2);
     
 }
 
@@ -85,8 +81,6 @@
 .containerOff{
     display: none;
 }
-
-
 
 .selectContainer{
     height: 100%;
