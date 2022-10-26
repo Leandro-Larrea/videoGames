@@ -37,8 +37,10 @@ export function Nav(props){
                     </div>
                 </div>
                 <div className={style.sortFilters}>
+                    <div className={style.positionRelleno}>
+                        <div className={style.positionRellenoL}></div>
+                    </div>
                     <div className={style.position}>
-                    <div className={style.positionRellenoL}></div>
                         <div onClick={ff} className={b === 0?style.sortContainerFilter: style.sortContainerFilterOn}>
                             <div  className={style.sortText}>
                                 <a className={b === 1? style.aOn: style.aOff}>Genres Filter</a>
@@ -80,6 +82,8 @@ export function Nav(props){
                                 </NavLink >
                             </div>
                         </div>
+                    </div>
+                    <div className={style.positionRelleno}>
                         <div className={style.positionRellenoR}></div>
                     </div>
                     

@@ -4,7 +4,7 @@
     position: absolute;
     transform: translateY(40px);
     z-index: 10;
-    padding: 0px 0px 6px 0px;
+    padding: 0px 0px 3px 0px;
     /* border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px; */
     background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
@@ -19,13 +19,13 @@
         position: absolute;
         transform: translateY(40px);
         z-index: 10;
-        padding: 0px 0px 6px 0px;
+        padding: 0px 0px 3px 0px;
         /* border-bottom-right-radius: 5px;
         border-bottom-left-radius: 5px; */
         background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
         animation: moveBackground 1s infinite linear alternate ;
         background-size: 500%;
-        transition: 1s;
+        transition: 500ms;
         }
 .hoverOriginOff{
     width: 100%;
@@ -33,14 +33,14 @@
     position: absolute;
     transform: translateY(-38px);
     z-index: 10;
-    padding: 0px 0px 6px 0px;
+    padding: 0px 0px 3px 0px;
     /* border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px; */
     background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
     animation: moveBackground 1s infinite linear alternate ;
     background-size: 500%;
     box-sizing: border-box;
-    transition: 1s;
+    transition: 500ms;
  }
         
 .hoverOff{
@@ -49,7 +49,7 @@
     position: absolute;
     transform: translateY(-519.5px);
     z-index: 10;
-    padding: 0px 0px 6px 0px;
+    padding: 0px 0px 3px 0px;
     /* border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px; */
     background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
@@ -95,7 +95,7 @@
     color:white;
     background-color: transparent;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 14px;
     background-color:black;
     border: none;
     padding: 3px;

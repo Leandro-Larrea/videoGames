@@ -2,15 +2,14 @@
     width: 100%;
     gap: 10px;
     position: absolute;
-    transform: translateY(50px) translateX(-5px);
+    transform: translateY(50px) translateX(-3px);
     z-index: 10;
-    padding: 0px 0px 6px 5px;
+    padding: 0px 0px 3px 3px;
     /* border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px; */
     background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
     animation: moveBackground 1s infinite linear alternate ;
     background-size: 500%;
-    
     transition: 1s;
     }
 
@@ -20,7 +19,7 @@
     position: absolute;
     transform: translateY(-130.5px);
     z-index: 10;
-    padding: 0px 0px 6px 0px;
+    padding: 0px 0px 3px 0px;
     /* border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px; */
     background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
@@ -29,8 +28,6 @@
     box-sizing: border-box;
     transition: 1s;
 }
-
-
 
  @keyframes moveBackground{
     0% {background-position-x: left;} 
@@ -109,17 +106,18 @@
 .sortsOn{
     padding: 5px;
     position: absolute;
-    width: 100%;
     height: 100%;
-    background-color:black;
+    background-color:rgb(18, 18, 19);
     text-align: center;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
     gap: 2px;
     box-sizing: border-box;
-    right: -140px;
+    border-radius: 5px;
+    right: -95px;
     transition: 0.2s;
+    background-color: rgb(2, 9, 15);
 }
 
 .containerOff{
@@ -133,11 +131,20 @@ select{
 
 .sortText{
     text-align: center;
+    font-size: 14px;
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
 }
 
 .button{
-    width: 100px;
+    width: 88px;
+    color: white;
+    border: 1px solid rgb(0, 72, 140);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.button:hover{
+    background:rgb(45, 106, 219);
 }

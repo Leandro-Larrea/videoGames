@@ -10,7 +10,7 @@
 }
 
 .navHover{
-    padding-bottom: 5px;
+    padding-bottom: 3px;
     background: linear-gradient(90deg,rgb(0, 72, 140), rgb(207, 219, 229));
     animation: moveBackground 1s infinite linear alternate ;
     background-size: 500%;
@@ -23,8 +23,9 @@
 
 .sortFilters{
     display: flex;
-    gap: 5px;
-    margin: 0 5px;
+    gap: 3px;
+    margin: 0 1px;
+    margin-right: 0;
     box-sizing: border-box;
     height: 3.1rem;
 }
@@ -76,12 +77,12 @@
 
 .position{
     position: relative;
-    width: 130px;
+    width: 110px;
     height: 100%; 
 }
 
 .positionOn{
-    width: 130px;
+    width: 110px;
     height: 100%; 
     background: white;
     color: black;
@@ -192,11 +193,10 @@
     }
 
     .sortFilters{
-        width: 100%;
         justify-content: center;
         position: relative;
+        height: 40px; 
     }
-
 
 
     /* .sortFilters:before{
@@ -211,31 +211,25 @@
      */
 
     .marginQuery{
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         justify-content: center;
     }
     .margin{
         padding: 0;
     }
 
-    .positionRellenoR, .positionRellenoL{
+    .positionRelleno{
+        width: fit-content;
         background-color: black;
         height: 100%;
         width: 300px;
-        position: absolute;
-        background-color: black;
-        z-index: 300;
     }
-
-    .positionRellenoR{
-        right: -305px;
-    }  
-
-    .positionRellenoL{
-        left: -305px;
-    }  
-    
-    
+    .positionRellenoR, .positionRellenoL{
+        background-color: black;
+        height: 100%;
+        
+        background-color: black;
+    }
 }
 
 
