@@ -1,5 +1,10 @@
 @import 'normalize.css';
  .app{
+    background-image: url("../images/post.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: scroll;
     overflow-x: hidden;
-    overflow-y: hidden;
+    height: 100vh;
  }

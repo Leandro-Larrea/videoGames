@@ -65,6 +65,7 @@
     justify-content: center;
     cursor: pointer;
     color: white;
+    transition: 0.4s;
 }
 
 .rellenoOn{
@@ -85,7 +86,8 @@
 }
 
 .relleno:hover{
-    background:rgb(45, 106, 219);
+    color: white;
+    box-shadow: inset 113px 0 0 0px rgb(58, 147, 230);
 }
 
 .sorts{
@@ -140,7 +142,6 @@ select{
 .button{
     width: 88px;
     color: white;
-    border: 1px solid rgb(0, 72, 140);
     background-color: transparent;
     cursor: pointer;
 }

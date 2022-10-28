@@ -132,7 +132,7 @@ export default function Post(props){
                         </div>
                         <div className={style.itemDescription}>
                             <label className={style.label}>Description:</label>
-                            <p className={error.description?style.errorT:style.ok}>{error.description}</p>
+                            <p className={error.description?style.errorTD:style.ok}>{error.description}</p>
                                 <textarea value={info.description} name="description" onChange={handleChange} className={error.description?style.error:style.input}>
                                 </textarea>
                         </div>

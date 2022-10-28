@@ -11,7 +11,7 @@ const {
 
  const linksitos = async() =>{
      multiLink=[];
-     for(let i = 6; i < 11; i++){
+     for(let i = 7; i < 8; i++){
          multiLink.push(axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&&page=${i}`))
      }
      apiGames = await Promise.all(multiLink);
@@ -27,15 +27,14 @@ const getGames = async()=>{
    
       const apiInfo = box.map(e => {
           return {
-            releaseDate: e.released,
+                releaseDate: e.released,
                 name: e.name,
                 id: e.id, 
                 genres: e.genres.map(p => p.name),
                 img: e.background_image,  
                 rating: e.rating,
-                platforms: e.platforms
-                
-          }
+                platforms: e.platforms    
+            }
       })
         gamesData = await Videogame.findAll({
             include:{
@@ -134,11 +133,21 @@ router.get("/:idVideogame",async(req,res)=>{
             }catch(error){
                 console.log(error)
                     }
-        
         let data = await getId(idVideogame)
     res.status(200).json({data});
     }
 })
+
+ router.get("/platforms/:platform", async(req,res)=>{
+     const {platform} = req.params;
+     let a = await getGames()
+     if(platform === "todos")return res.json(a)
+      let b = a.filter(e => {
+          if(!e.createdAtDb && e.platforms.filter(a =>{ if(a.platform.name === platform)return a}).length) return e
+          if(e.createdAtDb && e.platforms.includes(platform)) return e
+      } )
+     return res.status(200).json(b)
+ })
 
 router.post("/",async(req,res)=>{
     const {name,  description, platforms, genres} = req.body;

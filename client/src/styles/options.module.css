@@ -1,0 +1,105 @@
+.hover{
+    width: 100%;
+    gap: 10px;
+    position: absolute;
+    transform: translateY(40px);
+    z-index: 10;
+    padding: 0px 0px 3px 0px;
+    /* border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px; */
+    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
+    animation: moveBackground 1s infinite linear alternate ;
+    background-size: 500%;
+    transition: 1s;
+    }
+
+.hoverOrigin{
+    width: 100%;
+    gap: 10px;
+    position: absolute;
+    transform: translateY(40px);
+    z-index: 10;
+    padding: 0px 0px 3px 0px;
+    /* border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px; */
+    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
+    animation: moveBackground 1s infinite linear alternate ;
+    background-size: 500%;
+    transition: 500ms;
+    }
+
+.hoverOriginOff{
+    width: 100%;
+    gap: 10px;
+    position: absolute;
+    transform: translateY(-38px);
+    z-index: 10;
+    padding: 0px 0px 3px 0px;
+    /* border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px; */
+    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
+    animation: moveBackground 1s infinite linear alternate ;
+    background-size: 500%;
+    box-sizing: border-box;
+    transition: 500ms;
+ }
+        
+.hoverOff{
+    width: 100%;
+    gap: 10px;
+    position: absolute;
+    transform: translateY(-119.5px);
+    z-index: 10;
+    padding: 0px 0px 3px 0px;
+    /* border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px; */
+    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(234, 239, 245));
+    animation: moveBackground 1s infinite linear alternate ;
+    background-size: 500%;
+    box-sizing: border-box;
+    transition: 1s;
+}
+
+.option:hover{
+    background:rgb(45, 106, 219);
+    
+}
+
+ @keyframes moveBackground{
+0% {background-position-x: left;} 
+100%{background-position-x: right;} 
+} 
+
+.container{
+    gap: 10px;
+    background-color: black;
+    /* border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px; */
+    margin: 0;
+}
+
+.containerOff{
+    display: none;
+}
+
+.selectContainer{
+    height: 100%;
+    align-items:center;
+    position: relative;
+    width: 100%;
+    
+}
+
+.option{
+    box-sizing: border-box;
+    color:white;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    height: 40px;
+    background-color:black;
+    border: none;
+    padding: 3px;
+    width: 100%;
+}
+

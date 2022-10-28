@@ -8,7 +8,6 @@ import kirby from "../images/loader2.gif"
 import kirby1 from "../images/kirby.gif"
 
 export function Data(props){
-    
     const id = props.match.params.id;
     const dispatch = useDispatch()
 

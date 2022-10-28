@@ -1,5 +1,5 @@
 import {SORT_ABC, SORT_RATING,SEARCH_NAME, FILTER, CLEAN, GET_ALL, GET_GAME_DETAIL,
-         GET_GAME_NAME, GET_GENRES, FILTER_DB, GET_PLATFORMS} from "./actions.js"
+         GET_GAME_NAME, GET_GENRES, FILTER_DB, GET_PLATFORMS,FILTER_PLATFORMS} from "./actions.js"
 
 const initialState ={
     games:[],
@@ -36,6 +36,12 @@ export function rootReducer(state = initialState, action){
                 ...state,
                 filterGames: [...r]
             }
+        case FILTER_PLATFORMS:
+            console.log(action.payload)
+            return{
+                ...state,
+                filterGames: action.payload
+            }
         case GET_GAME_DETAIL: 
         let e = action.payload 
             if(e.createdAtDb) e = {...e, genres: e.genres.map(e => e.name)}     
@@ -54,7 +60,6 @@ export function rootReducer(state = initialState, action){
                 filterGames: s
         }
         case CLEAN:
-
             return{
                 ...state,
                 gameDetail: {}

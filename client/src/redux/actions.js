@@ -11,6 +11,7 @@ export const SORT_ABC = "SORT_ABC";
 export const SORT_RATING = "SORT_RATING";
 export const FILTER_DB = "FILTER_DB";
 export const GET_PLATFORMS = "GET_PLATFORMS";
+export const FILTER_PLATFORMS = "FILTER_PLATFORMS"
 
 export const getAll = () => dispatch =>
 fetch("http://localhost:3001/videogames")
@@ -76,10 +77,15 @@ export const clean = ()=> (dispatch) =>{
     dispatch({type: CLEAN})
 }
 
- export const filterDb = (t) => dispatch =>{
+export const filterDb = (t) => dispatch =>{
     return dispatch({type: FILTER_DB, payload: t})}
 
-
+export const filterPlatforms = (p) => dispatch =>
+fetch(`http://localhost:3001/videogames/platforms/${p}`)
+.then(e=> e.json())
+.then(a=> {
+    dispatch({type: FILTER_PLATFORMS, payload: a})
+} )
 
 export const getPlatforms = () => dispatch =>
     fetch("http://localhost:3001/videogames/platforms")

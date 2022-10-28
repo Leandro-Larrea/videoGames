@@ -10,10 +10,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
-    border: 1px solid rgb(51, 135, 190);
+    box-shadow: 0 0px 5px white;
     cursor: pointer;
     border-radius: 5px;
     position: relative;
+   overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 input{
@@ -35,17 +37,16 @@ input{
     border-radius: 5px;
     transition:  0.2s;
     
+    
 }
 .cardHover:hover{
     background: linear-gradient(rgb(0, 72, 140), rgb(255, 254, 216));
     box-shadow: 0px 0px 10px rgba(254, 255, 254, 0.918);    
     transform: scale(1.02);
-    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(255, 254, 216));
+    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(116, 166, 189));
     animation: moveBackground 700ms infinite linear alternate ;
     background-size: 500%;
 }
-
-
 
 @keyframes moveBackground{
     0% {background-position-x: left;} 
@@ -54,25 +55,30 @@ input{
 
 .img{
     height: 100%;
+    max-height: 300px;
     width: 100%;
     background-color: rgba(254, 255, 254, 0.493);
     margin: 0;
+    
 }
 .name{
     grid-column: span 2;
     padding: 2px;
     margin-top: 2px;
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    margin-top: -1px;
 }
 
 .imgContainer{
     margin: 0;
     padding: 0;
     border: 0;
-    height: 240px;
-    grid-column: span 2;
-
-   
+    height: 280px;
+    grid-column: span 2;   
 }
+
 .genres{
     right: 0;
     left: 0;

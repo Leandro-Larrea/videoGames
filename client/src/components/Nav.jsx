@@ -6,12 +6,23 @@ import { SearchBar } from "./SearchBar";
 import {Menu} from "./Menu.jsx";
 import { useState } from "react";
 import { Filter } from "./Filter";
+import { Options } from "./Options";
 
 export function Nav(props){
     
    const [a, setA] = useState(0)
    const [b, setB] = useState(0)
    const [c, setC] = useState(0)
+   const [d, setD] = useState(0)
+   const [fq, setFq] = useState(0)
+
+   const fQuery = (e)=>{
+    fq === 0? setFq(1): setFq(0)
+}
+
+   const ffff = (e)=>{
+    d === 0? setD(1): setD(0)
+}
 
    const fff = (e)=>{
     c === 0? setC(1): setC(0)
@@ -26,6 +37,13 @@ export function Nav(props){
     a === 0? setA(1): setA(0)
      
    }
+
+   const autoOff = (e) =>{
+    if(fq === 1 && window.innerWidth > 1092) setFq(0)
+   }
+
+   window.addEventListener("resize",autoOff)
+
     return(
         <div className={style.navHover}>
             <nav className={style.nav}>
@@ -36,10 +54,7 @@ export function Nav(props){
                         <SearchBar match = {props.match}/>
                     </div>
                 </div>
-                <div className={style.sortFilters}>
-                    <div className={style.positionRelleno}>
-                        <div className={style.positionRellenoL}></div>
-                    </div>
+                <div className={style.sortFilters}> 
                     <div className={style.position}>
                         <div onClick={ff} className={b === 0?style.sortContainerFilter: style.sortContainerFilterOn}>
                             <div  className={style.sortText}>
@@ -56,6 +71,14 @@ export function Nav(props){
                         </div>
                         <Filter c={c} match={props.match} origin={true}></Filter>
                     </div>
+                    <div className={style.position}>
+                        <div onClick={ffff} className={d=== 0?style.sortContainerFilter: style.sortContainerFilterOn}>
+                            <div  className={style.sortText}>
+                                <a className={d === 1? style.aOn: style.aOff}>Platforms Filter</a>
+                            </div>
+                        </div>
+                        <Filter d={d} match={props.match} platforms={true}></Filter>
+                    </div>
                     
                     <div className={style.position}>
                             <div onClick={f} className={a === 0?style.sortContainerFilter: style.sortContainerFilterOn}>
@@ -66,30 +89,41 @@ export function Nav(props){
                         <Menu a={a} match={props.match}></Menu>
                     </div>
                     <div className={style.position}>
+                        <NavLink className={style.sortContainer} to="/post"> 
                         <div className={style.sortContainerFilter}>
+                            <div  className={style.sortText}>                    
+                                    <p className={style.navButton}>Db Options</p>  
+                            </div> 
+                        </div>
+                        </NavLink >
+                    </div>
+                    <div className={style.hamburger}>
+                        <div onClick={fQuery} className={fq=== 0?style.sortContainerFilter: style.sortContainerFilterOn}>
                             <div  className={style.sortText}>
-                                <NavLink className={style.sortContainer} to="/post">                     
-                                    <p className={style.navButton}> Post Game </p>
-                                </NavLink >
+                                <a className={fq === 1? style.aOn: style.aOff}>Options</a>
                             </div>
                         </div>
+                        <Options b={fq} match={props.match} platforms={true}></Options>
                     </div>
                     <div className={style.position}>
+                        <NavLink className={style.sortContainer} to="/post"> 
+                        <div className={style.sortContainerFilter}>
+                            <div  className={style.sortText}>                    
+                                    <p className={style.navButton}> Post Game </p>  
+                            </div> 
+                        </div>
+                        </NavLink >
+                    </div>
+                    <div className={style.position}>
+                        <NavLink className={style.sortContainer} to="/menu">
                         <div className={style.sortContainerFilter}>
                             <div  className={style.sortText}>
-                                <NavLink className={style.sortContainer} to="/menu">
-                                    <p className={style.navButton}> Home </p>
-                                </NavLink >
+                                <p className={style.navButton}> Home </p>     
                             </div>
                         </div>
-                    </div>
-                    <div className={style.positionRelleno}>
-                        <div className={style.positionRellenoR}></div>
-                    </div>
-                    
-                    
-                </div>
-               
+                        </NavLink >
+                    </div>                                      
+                </div>  
             </nav>
         </div>
     )
