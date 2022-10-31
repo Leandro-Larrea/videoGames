@@ -13,7 +13,7 @@ export function Data(props){
 
     useEffect(()=>{     
         dispatch(getId(id))
-        return ()=> dispatch(clean())     
+        return ()=> dispatch(clean("gameDetail"))     
     },[]);
 
     const detail = useSelector(state => state.gameDetail)

@@ -20,6 +20,20 @@
     grid-column: span 2;
 }
 
+.loaderContainer2{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: 0;
+    right: 50%;
+}
+
+.titleOff{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
 .titleOff{
     display: none;
 }
@@ -39,6 +53,7 @@
     border: 3px solid rgba(71, 136, 216, 0.7);
     border-radius: 10px;
     box-shadow: 0px 0px 10px white;
+    position: relative;
 }
 
 .item{
@@ -135,6 +150,7 @@ label{
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: space-between;
+    position: relative;
     
 }
 
@@ -192,6 +208,11 @@ h2{
 .loader{
     min-width:200px;
 }
+
+.loader2{
+    position: absolute;
+    bottom: 0;
+}
 .loaderContainer{
     display: flex;
     width:100%;
@@ -210,7 +231,7 @@ h2{
     h2{
         font-size: 1.4rem;
     }
-
+    
     .title{
    grid-column:span 1;
     }

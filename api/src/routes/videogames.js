@@ -60,7 +60,6 @@ const getName = async(name)=>{
     const apiDbGames = await getGames()
     let arrayNames = apiDbGames.filter(g =>  g.name.toLowerCase().includes(name.toLowerCase())
     )
-    
     if(arrayNames.length) return arrayNames
     throw ("Game not found.")
 }
@@ -68,10 +67,14 @@ const getName = async(name)=>{
 const getPlatforms = async()=>{
     let box = await linksitos();
     const plat = []
-    box.forEach((e) => e.platforms.forEach(a =>{ if(!plat.includes(a.platform.name)){plat.push(a.platform.name)}}))
-    
+    box.forEach((e) => e.platforms.forEach(a =>{
+         if(!plat.includes(a.platform.name)){plat.push(a.platform.name)
+                }
+            }
+        )
+    )
     return plat
-    }
+}
 
 router.get("/platforms",async(req,res)=>{
     let platforms = await getPlatforms()
@@ -189,11 +192,11 @@ router.delete("/:id", async (req, res)=>{
 
 router.put("/:id", async(req,res)=>{
     const {id} = req.params
-    const a = await Videogame.findOne({
+    const updatedGame = await Videogame.findOne({
         where:{
             id:id
         },
-        includes:{
+        include:{
             model: Genre,
             attributes:["name"],
             through:{
@@ -201,8 +204,18 @@ router.put("/:id", async(req,res)=>{
             }
         }
     })
-    await a.update(req.body)
-    return res.status(201).json(a)
+      await updatedGame.update(req.body)
+       let newGenres = await Genre.findAll({
+           where:{
+               name:{
+                [Op.in]: req.body.genres
+               }
+               
+           }
+       })
+        await updatedGame.setGenres(newGenres)
+
+    return res.status(201).json({updatedGame, newGenres})
 })
 
 

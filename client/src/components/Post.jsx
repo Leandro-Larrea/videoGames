@@ -3,23 +3,23 @@ import { useEffect } from "react";
 import style from "../styles/post.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { connect} from "react-redux";
-import { editGame, getAll, getGenres } from "../redux/actions";
+import { clean, editGame, getAll, getGenres, updateGame } from "../redux/actions";
 import { postCharacter } from "../redux/actions";
 import { getPlatforms } from "../redux/actions";
 import ok from "../images/ok-icon.png";
 import kirby from "../images/loader2.gif";
-import { Link } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
 
 export default function Post(props){
               
     const dispatch = useDispatch()
-    
     const todos = useSelector(state=> state.games)
     const platforms = useSelector(state => state.platforms)
     const id = props.match.params.id
     const editing = useSelector(state => state.gameDetail)
     const genresData = useSelector((state)=> state.genres)
+    const answer = useSelector(state => state.answer)
+    const history = useHistory()
     
     useEffect(()=>{
         if(!todos.length){
@@ -35,9 +35,11 @@ export default function Post(props){
         if(id){
             dispatch(editGame(id))
         }
+        return ()=> dispatch(clean())
     },[todos])
    
-   
+    let dispatchSwitch = false
+
     let [info, setInfo] = useState({
         name: "",
         genres:[],
@@ -46,25 +48,20 @@ export default function Post(props){
         rating:0,
         platforms:[]
     })
-   if(id && editing.length && Object.values(editing[0]).length >= 7 && !info.genres.length && editing[0].genres.length){
+   if(id && editing.length && !info.createdAtDb){
     console.log(info)
     setInfo(
        editing[0]
-    )
-    
+        )
     } 
 
     useEffect( ()=> {
         validation()
-        
     },[info])
 
-    const [error, setError] = useState({
- 
-    })
-
+    const [error, setError] = useState({})
+    const [loader, setLoader] = useState(false)
     function handleChange(e){
-        console.log(info)
         if(e.target.name === "genres"){
             info.genres.includes(e.target.value)?
             setInfo({...info,
@@ -91,7 +88,24 @@ export default function Post(props){
     const create = (e)=>{
         e.preventDefault()
         if(Object.values(error).filter(e => e !== null).length) return alert("Fill each field")
-        
+        if(id) {
+             dispatch(updateGame(id,info))
+            // dispatch(getAll())
+            // setInfo({
+            //     name: "",
+            //     genres:[],
+            //     description:"",
+            //     releaseDate:"",
+            //     rating:0,
+            //     platforms:[]
+            // })
+            // alert("The game has been updated succesfully",console.log("anda el cb"))
+            // document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
+            // history.push("/dbOptions")
+            setLoader(true)
+        return
+    }
+
        let a = dispatch(postCharacter(info))
         setInfo({
             name: "",
@@ -104,6 +118,33 @@ export default function Post(props){
         alert("The game has been created succesfully")
         document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
         dispatch(getAll())
+    }
+
+    const cleanAndBack = () =>{
+        console.log("tortuga")
+        dispatch(clean("games"))
+        dispatch(getAll())
+        setInfo({
+            name: "",
+            genres:[],
+            description:"",
+            releaseDate:"",
+            rating:0,
+            platforms:[]
+        })
+        document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
+        history.push("/dbOptions")
+    }
+
+    if(answer && loader){
+        setLoader(false)
+        if(answer === "ok"){
+            alert("The game has been updated succesfully")
+            cleanAndBack()
+            return
+        }
+        alert("something get wrong")
+        return
     }
 
     function validation(){
@@ -193,9 +234,11 @@ export default function Post(props){
                                     }
                                 )
                             }
+                            
                         </div>
                         <button className={!editing.length && !id? style.submit: style.titleOff}>Post Game</button>
                         <button className={editing.length ? style.submit: style.titleOff}>Edit Game</button>
+                        <img className={loader?style.loader2:style.titleOff} src={kirby}></img>
                     </form>
             
                 </main>)}

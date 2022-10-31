@@ -1,5 +1,5 @@
 import {SORT_ABC, SORT_RATING,SEARCH_NAME, FILTER, CLEAN, GET_ALL, GET_GAME_DETAIL,
-         GET_GAME_NAME, GET_GENRES, FILTER_DB, GET_PLATFORMS,FILTER_PLATFORMS, GAME_DELETED, EDIT_GAME} from "./actions.js"
+         GET_GAME_NAME, GET_GENRES, FILTER_DB, GET_PLATFORMS,FILTER_PLATFORMS, GAME_DELETED, EDIT_GAME,UPDATED} from "./actions.js"
 
 const initialState ={
     games:[],
@@ -7,7 +7,8 @@ const initialState ={
     gameDetail:{},
     gameName:[],
     genres:[],
-    platforms:[]
+    platforms:[],
+    answer:""
 }
 
 export function rootReducer(state = initialState, action){
@@ -62,7 +63,7 @@ export function rootReducer(state = initialState, action){
         case CLEAN:
             return{
                 ...state,
-                gameDetail: {}
+                [action.payload]: []
             }
         case GET_GENRES:
             return{
@@ -105,11 +106,16 @@ export function rootReducer(state = initialState, action){
                  platforms: action.payload
              }
         case EDIT_GAME:
-            let x =  state.games.filter(e=> e.id == action.payload)
+            let x =  state.games.filter(e=> e.id === action.payload)
             console.log("from reducer", x, state.games)
             return{
                 ...state,
                 gameDetail:[...x]
+            }
+        case UPDATED:
+            return{
+                ...state,
+                answer: "ok"
             }   
         default: 
             return state

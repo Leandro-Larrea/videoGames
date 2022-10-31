@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteGame, filterDb, getAll } from "../redux/actions";
+import { clean, deleteGame, filterDb, getAll } from "../redux/actions";
 import { Card } from "./Card";
 import style from "../styles/dbOptions.module.css";
 import loader2 from "../images/loader2.gif";
@@ -21,7 +21,11 @@ export const DbOptions = ()=>{
             }
             console.log("1234")
             dispatch(filterDb("db"))
+            
     },[todos])
+    useEffect(()=>{
+        return  ()=>dispatch(clean("filterGames"))
+    },[])
 
     const byeBye = (e)=>{
         e.preventDefault()
