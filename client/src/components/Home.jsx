@@ -17,7 +17,8 @@ export function Home(props){
     useEffect(()=>{
         if(!games.length){
         dispatch(getAll())
-        dispatch(genresFilter("Todos"))}
+        }
+        dispatch(genresFilter("Todos"))
     },[]);
 
     useEffect(()=>{

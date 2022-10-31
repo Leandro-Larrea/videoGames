@@ -166,6 +166,45 @@ router.post("/",async(req,res)=>{
     } 
 })
 
+router.delete("/:id", async (req, res)=>{
+    const {id} = req.params
+    try {
+       await Videogame.destroy({
+            where:{
+                id:id
+            },
+        include:{
+            model:Genre,
+            attributes:["name"]
+        },
+        through:{
+            attributes:[]
+        }
+    })
+    return res.status(200).send(id)
+    } catch (error) {
+        return res.status(200).send("Somenthing get wrong")
+    }
+})
+
+router.put("/:id", async(req,res)=>{
+    const {id} = req.params
+    const a = await Videogame.findOne({
+        where:{
+            id:id
+        },
+        includes:{
+            model: Genre,
+            attributes:["name"],
+            through:{
+                attributes:[]
+            }
+        }
+    })
+    await a.update(req.body)
+    return res.status(201).json(a)
+})
+
 
 
 

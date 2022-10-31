@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import style from "../styles/post.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { connect} from "react-redux";
-import { getGenres } from "../redux/actions";
+import { editGame, getAll, getGenres } from "../redux/actions";
 import { postCharacter } from "../redux/actions";
 import { getPlatforms } from "../redux/actions";
 import ok from "../images/ok-icon.png";
@@ -15,22 +15,44 @@ export default function Post(props){
               
     const dispatch = useDispatch()
     
+    const todos = useSelector(state=> state.games)
     const platforms = useSelector(state => state.platforms)
+    const id = props.match.params.id
+    const editing = useSelector(state => state.gameDetail)
+    const genresData = useSelector((state)=> state.genres)
     
     useEffect(()=>{
-        dispatch(getGenres())
-        dispatch(getPlatforms())
-    },[])
+        if(!todos.length){
+            dispatch(getAll())
+            console.log("all")
+        }
+        if(!genresData.length){
+            console.log("genres")
+        dispatch(getGenres())}
+        if(!platforms.length){
+        dispatch(getPlatforms())}
+        console.log("platform")
+        if(id){
+            dispatch(editGame(id))
+        }
+    },[todos])
    
-    const genresData = useSelector((state)=> state.genres)
-    const [info, setInfo] = useState({
+   
+    let [info, setInfo] = useState({
         name: "",
         genres:[],
         description:"",
         releaseDate:"",
         rating:0,
         platforms:[]
-    }) 
+    })
+   if(id && editing.length && Object.values(editing[0]).length >= 7 && !info.genres.length && editing[0].genres.length){
+    console.log(info)
+    setInfo(
+       editing[0]
+    )
+    
+    } 
 
     useEffect( ()=> {
         validation()
@@ -42,7 +64,7 @@ export default function Post(props){
     })
 
     function handleChange(e){
-
+        console.log(info)
         if(e.target.name === "genres"){
             info.genres.includes(e.target.value)?
             setInfo({...info,
@@ -69,6 +91,7 @@ export default function Post(props){
     const create = (e)=>{
         e.preventDefault()
         if(Object.values(error).filter(e => e !== null).length) return alert("Fill each field")
+        
        let a = dispatch(postCharacter(info))
         setInfo({
             name: "",
@@ -80,7 +103,7 @@ export default function Post(props){
         })
         alert("The game has been created succesfully")
         document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
-        
+        dispatch(getAll())
     }
 
     function validation(){
@@ -100,11 +123,12 @@ export default function Post(props){
         setError({...e})
  
     }
-
-    if(genresData.length && platforms.length){
+    
+    if(genresData.length && platforms.length && !id || genresData.length && platforms.length && editing.length){
        return (<main className={style.main}>
                     <form className={style.form} onSubmit={create}>
-                        <h1 className={style.title}>Post your own game</h1>
+                        <h1 className={!editing.length && !id?style.title: style.titleOff}>Post your own game</h1>
+                        <h1 className={editing.length?style.title: style.titleOff}>Edit your own game</h1>
                         <div className={style.item}>
                             <label  htmlFor="name"  className={style.label}>Name:</label>
                             <p className={error.name?style.errorT:style.ok}>{error.name}</p>
@@ -146,7 +170,7 @@ export default function Post(props){
                                 return(
                                     <div key={g.id} className={style.itemCheck}>
                                         <label key={g.name + 1} className={style.checkLabel} htmlFor={g.name}>{g.name}</label>
-                                        <input onChange={handleChange} name ="genres" type="checkbox" value={g.name} className={style.check} id={g.name} key={i}></input>
+                                        <input onChange={handleChange} name ="genres" type="checkbox" checked={info.genres.includes(g.name)} value={g.name} className={style.check} id={g.name} key={i}></input>
                                     </div>
                                         )   
                                     }
@@ -163,14 +187,15 @@ export default function Post(props){
                                 return(
                                     <div key={g} className={style.itemCheck}>
                                         <label key={g + 1} className={style.checkLabel} htmlFor={g}>{g}</label>
-                                        <input onClick={handleChange} name ="platforms" type="checkbox" value={g} className={style.check} id={g} key={i}></input>
+                                        <input onClick={handleChange} name ="platforms" type="checkbox" defaultChecked={info.platforms.includes(g)} value={g} className={style.check} id={g} key={i}></input>
                                     </div>
                                         )   
                                     }
                                 )
                             }
                         </div>
-                        <button className={style.submit}>Post Game</button>
+                        <button className={!editing.length && !id? style.submit: style.titleOff}>Post Game</button>
+                        <button className={editing.length ? style.submit: style.titleOff}>Edit Game</button>
                     </form>
             
                 </main>)}

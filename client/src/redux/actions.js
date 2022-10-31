@@ -12,6 +12,9 @@ export const SORT_RATING = "SORT_RATING";
 export const FILTER_DB = "FILTER_DB";
 export const GET_PLATFORMS = "GET_PLATFORMS";
 export const FILTER_PLATFORMS = "FILTER_PLATFORMS"
+export const GAME_DELETED = "GAME_DELETED"
+export const FAIL_DELETE = "FAIL_DELETE"
+export const EDIT_GAME = "EDIT_GAME"
 
 export const getAll = () => dispatch =>
 fetch("http://localhost:3001/videogames")
@@ -78,6 +81,7 @@ export const clean = ()=> (dispatch) =>{
 }
 
 export const filterDb = (t) => dispatch =>{
+    console.log("holis action")
     return dispatch({type: FILTER_DB, payload: t})}
 
 export const filterPlatforms = (p) => dispatch =>
@@ -93,5 +97,30 @@ export const getPlatforms = () => dispatch =>
     .then(b => {
         dispatch({type: GET_PLATFORMS, payload: b}) 
     })
+
+export const deleteGame = (id) => async (dispatch) =>{
+     await axios.delete(`http://localhost:3001/videogames/${id}`)
+     .then(a=> {console.log(a)
+        dispatch({type: GAME_DELETED, payload: a.data})
+     })
+     .catch(error =>{
+        dispatch({type: FAIL_DELETE})
+     })
+    
+}
+
+export const updateGame = (id) => async (dispatch) =>{
+    await axios.put(`http://localhost:3001/videogames/${id}`)
+    .then(a=> {
+        console.log(a)
+    })
+    .catch(error =>{
+        console.log(error)
+    })
+}
+
+export const editGame = (id) => dispatch => {
+    dispatch({type: EDIT_GAME, payload: id})
+}
 
 

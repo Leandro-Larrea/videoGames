@@ -36,6 +36,7 @@ input{
     align-items: center;
     border-radius: 5px;
     transition:  0.2s;
+    position: relative;
     
     
 }
@@ -94,6 +95,20 @@ input{
     align-items: center;
     margin: 0;   
     transition: background-color .5s;
+}
+
+.on{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: red;
+    top:4px;
+    right: 3px;
+    z-index: 100;
+    cursor: pointer;
+}
+.off{
+   display: none;
 }
 
 .genres:hover{

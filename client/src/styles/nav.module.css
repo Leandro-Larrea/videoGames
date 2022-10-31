@@ -127,7 +127,7 @@
     box-sizing: border-box;
     padding: 5px;
     cursor: pointer;
-    transition: 0.4s;
+    transition: box-shadow 0.4s;
 }
 
 
@@ -211,19 +211,15 @@
 }
 
 @media screen and (max-width: 1092px){
-    .nav{
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
+   
     .sortFilters{
         justify-content: center;
         position: relative;
-        height: 40px; 
         width: 100%;
         font-size: .9rem;
         background-color: black;
     }
+
     .position{
         width: 100px;
     }
@@ -257,6 +253,22 @@
     }
     .margin{
         padding: 0;
+    }
+}
+
+@media screen and (max-width: 922px) {
+    .nav{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sortFilters{
+        justify-content: center;
+        position: relative;
+        height: 40px; 
+        width: 100%;
+        font-size: .9rem;
+        background-color: black;
     }
 }
 

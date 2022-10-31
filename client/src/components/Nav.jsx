@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Redirect } from "react-router-dom";
+import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
 import style from "../styles/nav.module.css";
 import joystick from "../images/console.png";
 import { SearchBar } from "./SearchBar";
@@ -7,6 +7,8 @@ import {Menu} from "./Menu.jsx";
 import { useState } from "react";
 import { Filter } from "./Filter";
 import { Options } from "./Options";
+import { getAll } from "../redux/actions";
+import { useDispatch } from "react-redux";
 
 export function Nav(props){
     
@@ -42,6 +44,16 @@ export function Nav(props){
     if(fq === 1 && window.innerWidth > 1092) setFq(0)
    }
 
+   const history = useHistory()
+   const dispatch = useDispatch()
+   function go(e){
+    if(props.match.path === "/DbOptions") {
+        
+        history.push("/menu")
+        return
+    }
+    props.match.path !== "/menu" && history.push("/menu")
+   }
    window.addEventListener("resize",autoOff)
 
     return(
@@ -89,7 +101,7 @@ export function Nav(props){
                         <Menu a={a} match={props.match}></Menu>
                     </div>
                     <div className={style.position}>
-                        <NavLink className={style.sortContainer} to="/post"> 
+                        <NavLink className={style.sortContainer} to="/DbOptions"> 
                         <div className={style.sortContainerFilter}>
                             <div  className={style.sortText}>                    
                                     <p className={style.navButton}>Db Options</p>  
@@ -114,14 +126,12 @@ export function Nav(props){
                         </div>
                         </NavLink >
                     </div>
-                    <div className={style.position}>
-                        <NavLink className={style.sortContainer} to="/menu">
-                        <div className={style.sortContainerFilter}>
+                    <div className={style.position}> 
+                        <div className={style.sortContainerFilter} onClick={go}>
                             <div  className={style.sortText}>
                                 <p className={style.navButton}> Home </p>     
                             </div>
                         </div>
-                        </NavLink >
                     </div>                                      
                 </div>  
             </nav>
