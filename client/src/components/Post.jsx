@@ -15,7 +15,7 @@ export default function Post(props){
     const dispatch = useDispatch()
     const todos = useSelector(state=> state.games)
     const platforms = useSelector(state => state.platforms)
-    const id = props.match.params.id
+    let id = props.match.params.id
     const editing = useSelector(state => state.gameDetail)
     const genresData = useSelector((state)=> state.genres)
     const answer = useSelector(state => state.answer)
@@ -37,8 +37,6 @@ export default function Post(props){
         }
         return ()=> dispatch(clean())
     },[todos])
-   
-    let dispatchSwitch = false
 
     let [info, setInfo] = useState({
         name: "",
@@ -51,12 +49,13 @@ export default function Post(props){
    if(id && editing.length && !info.createdAtDb){
     console.log(info)
     setInfo(
-       editing[0]
+        editing[0]
         )
     } 
 
     useEffect( ()=> {
         validation()
+        return ()=>{if(id)id = null}
     },[info])
 
     const [error, setError] = useState({})
@@ -168,8 +167,8 @@ export default function Post(props){
     if(genresData.length && platforms.length && !id || genresData.length && platforms.length && editing.length){
        return (<main className={style.main}>
                     <form className={style.form} onSubmit={create}>
-                        <h1 className={!editing.length && !id?style.title: style.titleOff}>Post your own game</h1>
-                        <h1 className={editing.length?style.title: style.titleOff}>Edit your own game</h1>
+                        <h1 className={!id?style.title: style.titleOff}>Post your own game</h1>
+                        <h1 className={editing.length && id?style.title: style.titleOff}>Edit your own game</h1>
                         <div className={style.item}>
                             <label  htmlFor="name"  className={style.label}>Name:</label>
                             <p className={error.name?style.errorT:style.ok}>{error.name}</p>

@@ -88,7 +88,7 @@ export const filterDb = (t) => dispatch =>{
 export const filterPlatforms = (p) => dispatch =>
 fetch(`http://localhost:3001/videogames/platforms/${p}`)
 .then(e=> e.json())
-.then(a=> {
+.then(a=> { console.log(p, a)
     dispatch({type: FILTER_PLATFORMS, payload: a})
 } )
 

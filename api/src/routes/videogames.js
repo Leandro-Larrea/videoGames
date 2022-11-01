@@ -68,7 +68,7 @@ const getPlatforms = async()=>{
     let box = await linksitos();
     const plat = []
     box.forEach((e) => e.platforms.forEach(a =>{
-         if(!plat.includes(a.platform.name)){plat.push(a.platform.name)
+         if(!a.createdAtDb && !plat.includes(a.platform.name)){plat.push(a.platform.name)
                 }
             }
         )
@@ -147,8 +147,9 @@ router.get("/:idVideogame",async(req,res)=>{
      if(platform === "todos")return res.json(a)
       let b = a.filter(e => {
           if(!e.createdAtDb && e.platforms.filter(a =>{ if(a.platform.name === platform)return a}).length) return e
-          if(e.createdAtDb && e.platforms.includes(platform)) return e
+          if(e.createdAtDb && e.platforms.includes(platform)){ return e}
       } )
+      console.log(b)
      return res.status(200).json(b)
  })
 

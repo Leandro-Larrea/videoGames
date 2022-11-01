@@ -38,10 +38,13 @@ export function rootReducer(state = initialState, action){
                 filterGames: [...r]
             }
         case FILTER_PLATFORMS:
-            console.log(action.payload)
+            let c2 = action.payload.map((e) => {
+                if(e.createdAtDb) return {...e, genres: e.genres.map(e => e.name)}
+                return e
+            });   
             return{
                 ...state,
-                filterGames: action.payload
+                filterGames: c2
             }
         case GET_GAME_DETAIL: 
         let e = action.payload 
