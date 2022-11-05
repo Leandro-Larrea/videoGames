@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import style from "../styles/post.module.css"
 import { useDispatch, useSelector } from "react-redux";
-import { connect} from "react-redux";
 import { clean, editGame, getAll, getGenres, updateGame } from "../redux/actions";
 import { postCharacter } from "../redux/actions";
 import { getPlatforms } from "../redux/actions";
@@ -44,6 +43,7 @@ export default function Post(props){
         description:"",
         releaseDate:"",
         rating:0,
+        img:"",
         platforms:[]
     })
    if(id && editing.length && !info.createdAtDb){
@@ -89,18 +89,6 @@ export default function Post(props){
         if(Object.values(error).filter(e => e !== null).length) return alert("Fill each field")
         if(id) {
              dispatch(updateGame(id,info))
-            // dispatch(getAll())
-            // setInfo({
-            //     name: "",
-            //     genres:[],
-            //     description:"",
-            //     releaseDate:"",
-            //     rating:0,
-            //     platforms:[]
-            // })
-            // alert("The game has been updated succesfully",console.log("anda el cb"))
-            // document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
-            // history.push("/dbOptions")
             setLoader(true)
         return
     }
@@ -161,7 +149,6 @@ export default function Post(props){
         !/(\w*)\b([A-Z][a-z]\w*)\b(\w*)/.test(info.name) || info.name.length > 50? e.name = "(First letter must be capitalize)":
          e.name =  null;
         setError({...e})
- 
     }
     
     if(genresData.length && platforms.length && !id || genresData.length && platforms.length && editing.length){
@@ -178,7 +165,7 @@ export default function Post(props){
                         <div className={style.item}>
                             <label className={style.label}>Released:</label>
                             <p className={error.releaseDate?style.errorT:style.ok}>{error.releaseDate}</p>
-                                <input name="releaseDate" onChange={handleChange} className={error.releaseDate? style.error:style.input} type="text" value={info.releaseDate}>
+                                <input name="releaseDate" onChange={handleChange} className={error.releaseDate? style.error:style.input} type="text"  value={info.releaseDate}>
                                 </input>
     
                         </div>
@@ -191,7 +178,7 @@ export default function Post(props){
                         </div>
                         <div className={style.item}>
                             <label  htmlFor="img"  className={style.label}>Image:</label>
-                                <input name="img"  id="img" type="img" onChange={handleChange}>
+                                <input name="img"  id="img" type="text" onChange={handleChange} value={info.img}>
                             </input>      
                         </div>
                         <div className={style.itemDescription}>
@@ -232,14 +219,12 @@ export default function Post(props){
                                         )   
                                     }
                                 )
-                            }
-                            
+                            }    
                         </div>
                         <button className={!editing.length && !id? style.submit: style.titleOff}>Post Game</button>
                         <button className={editing.length ? style.submit: style.titleOff}>Edit Game</button>
                         <img className={loader?style.loader2:style.titleOff} src={kirby}></img>
                     </form>
-            
                 </main>)}
         return <div className={style.loaderContainer}><img className={style.loader} src={kirby}></img></div>
     }

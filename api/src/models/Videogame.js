@@ -35,6 +35,10 @@ module.exports = (sequelize) => {
       type: DataTypes.JSON,
       allowNull:false
     },
+    img:{
+      type: DataTypes.STRING,
+      allowNUll: true
+    }
   });
 };
 
