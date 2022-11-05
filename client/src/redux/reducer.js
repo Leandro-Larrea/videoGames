@@ -1,5 +1,6 @@
 import {SORT_ABC, SORT_RATING,SEARCH_NAME, FILTER, CLEAN, GET_ALL, GET_GAME_DETAIL,
-         GET_GAME_NAME, GET_GENRES, FILTER_DB, GET_PLATFORMS,FILTER_PLATFORMS, GAME_DELETED, EDIT_GAME,UPDATED} from "./actions.js"
+         GET_GAME_NAME, GET_GENRES, FILTER_DB, GET_PLATFORMS,FILTER_PLATFORMS, GAME_DELETED,
+          EDIT_GAME,UPDATED, ADD_GAME} from "./actions.js"
 
 const initialState ={
     games:[],
@@ -116,9 +117,21 @@ export function rootReducer(state = initialState, action){
                 gameDetail:[...x]
             }
         case UPDATED:
+            action.payload = {...action.payload, genres: action.payload.genres.map(e => e.name)}
             return{
                 ...state,
-                answer: "ok"
+               games: state.games.map(e=> {if(e.id === action.payload.id) e = action.payload
+            return e}),
+            answer:"ok"
+            }
+        case ADD_GAME:
+           
+             action.payload = {...action.payload, genres: action.payload.genres.map(e => e.name)}
+                
+              
+            return{
+                ...state,
+                games: [...state.games, action.payload]
             }   
         default: 
             return state

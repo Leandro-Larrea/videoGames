@@ -16,6 +16,7 @@ export const GAME_DELETED = "GAME_DELETED"
 export const FAIL_DELETE = "FAIL_DELETE"
 export const EDIT_GAME = "EDIT_GAME"
 export const UPDATED = "UPDATED"
+export const ADD_GAME = "ADD_GAME"
 
 export const getAll = () => dispatch =>
 fetch("http://localhost:3001/videogames")
@@ -26,8 +27,10 @@ fetch("http://localhost:3001/videogames")
 
 export function postCharacter(obj){
     return async function (dispatch){
-        const r = await axios.post(`http://localhost:3001/videogames`, obj);
-        return r
+         await axios.post(`http://localhost:3001/videogames`, obj)
+         .then(a=> { console.log(a.data)
+            dispatch({type: ADD_GAME, payload:a.data})
+        })
     }
 }
 
@@ -112,8 +115,8 @@ export const deleteGame = (id) => async (dispatch) =>{
 
 export const updateGame = (id,obj) => async (dispatch) =>{
     await axios.put(`http://localhost:3001/videogames/${id}`,obj)
-    .then(a=> {
-        dispatch({type:UPDATED})
+    .then(a=> { console.log(a.data)
+        dispatch({type: UPDATED, payload:a.data.a})
     })
     .catch(error =>{
         console.log(error)

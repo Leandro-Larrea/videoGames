@@ -8,7 +8,6 @@ import { NavLink } from "react-router-dom";
 
 export const DbOptions = ()=>{
 
-    
     const dispatch = useDispatch()
     const todos = useSelector (state => state.games)
     const games = useSelector(state => state.filterGames)
@@ -23,9 +22,7 @@ export const DbOptions = ()=>{
             dispatch(filterDb("db"))
             
     },[todos])
-    useEffect(()=>{
-        return  ()=>dispatch(clean("filterGames"))
-    },[])
+  
 
     const byeBye = (e)=>{
         e.preventDefault()
@@ -33,12 +30,13 @@ export const DbOptions = ()=>{
     }
 
     if(games.length === 0){
+        console.log(games)
         return <div className={style.loaderContainer}> <img className={style.loader} src={loader2}></img></div>}
         return (
         <div>
             <main className={style.home}>
                 {games?.map(e =>  
-                    <div key={e.name} className={style.container}>
+                    <div key={e.id} className={style.container}>
                         <Card className={style.card}
                         key={e.id}
                         name={e.name}

@@ -34,7 +34,7 @@ export default function Post(props){
         if(id){
             dispatch(editGame(id))
         }
-        return ()=> dispatch(clean())
+        return ()=> dispatch(clean("gameDetail"))   
     },[todos])
 
     let [info, setInfo] = useState({
@@ -93,29 +93,28 @@ export default function Post(props){
         return
     }
 
-       let a = dispatch(postCharacter(info))
+       dispatch(postCharacter(info))
         setInfo({
             name: "",
             genres:[],
             description:"",
             releaseDate:"",
+            img:"",
             rating:0,
             platforms:[]
         })
         alert("The game has been created succesfully")
         document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
-        dispatch(getAll())
     }
 
     const cleanAndBack = () =>{
         console.log("tortuga")
-        dispatch(clean("games"))
-        dispatch(getAll())
         setInfo({
             name: "",
             genres:[],
             description:"",
             releaseDate:"",
+            img:"",
             rating:0,
             platforms:[]
         })
@@ -125,7 +124,7 @@ export default function Post(props){
 
     if(answer && loader){
         setLoader(false)
-        if(answer === "ok"){
+        if(answer === "ok"){   
             alert("The game has been updated succesfully")
             cleanAndBack()
             return

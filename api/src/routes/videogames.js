@@ -163,8 +163,20 @@ router.post("/",async(req,res)=>{
         let genresDb = await Genre.findAll({where:{
             name: genres
         }})
-        game.addGenre(genresDb)
-        res.status(201).json(game)
+       await game.addGenre(genresDb)
+        let finalGame = await Videogame.findOne({
+            where:{
+                id:game.id
+        },
+        include:{
+            model:Genre,
+            attributes:["name"],
+            through:{
+                attributes:[]
+            }
+        }
+    })
+        return res.status(201).json(finalGame)
     }   catch (error) {
         return res.status(404).send("Error en alguno de los datos provistos")
     } 
@@ -215,8 +227,20 @@ router.put("/:id", async(req,res)=>{
            }
        })
         await updatedGame.setGenres(newGenres)
-
-    return res.status(201).json({updatedGame, newGenres})
+       let a = await Videogame.findOne({
+        where:{
+            id:id
+        },
+        include:{
+            model:Genre,
+            attributes:["name"],
+                through:{
+                    attributes:[]
+                }
+            }
+        }
+    )
+    return res.status(201).json({a})
 })
 
 
