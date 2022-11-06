@@ -86,8 +86,7 @@
     height: 100%;
     align-items:center;
     position: relative;
-    width: 100%;
-    
+    width: 100%; 
 }
 
 .option{
@@ -103,3 +102,14 @@
     width: 100%;
 }
 
+@media screen and (max-width: 922px) {
+    .option{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+   .option{
+    font-size:8px;
+   }
+}

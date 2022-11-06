@@ -128,7 +128,7 @@ input{
 
 @media screen and (max-width: 400px){
     .cardHover{
-        width: 250px;
+        max-width: 250px;
         padding: 3px;
         height: 250px;
     }

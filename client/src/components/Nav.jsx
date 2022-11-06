@@ -41,7 +41,7 @@ export function Nav(props){
    }
 
    const autoOff = (e) =>{
-    if(fq === 1 && window.innerWidth > 1092) setFq(0)
+    if(fq === 1 && window.innerWidth > 1202) setFq(0)
    }
 
    const history = useHistory()
