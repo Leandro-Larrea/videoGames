@@ -14,7 +14,7 @@
     cursor: pointer;
     border-radius: 5px;
     position: relative;
-   overflow-x: hidden;
+    overflow-x: hidden;
     overflow-y: hidden;
 }
 
@@ -117,4 +117,23 @@ input{
 
 .genres:hover{
     background: linear-gradient(rgba(0,0,0, .8), rgba(0,0,0,1));
+}
+
+@media screen and (max-width: 700px){
+    .cardHover{
+        width: 280px;
+        padding: 3px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .cardHover{
+        width: 250px;
+        padding: 3px;
+        height: 250px;
+    }
+
+    .card{
+        font-size: 13px;
+    }
 }

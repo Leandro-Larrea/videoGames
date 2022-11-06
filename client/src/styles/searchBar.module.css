@@ -8,8 +8,6 @@
     padding: 0 10px;
 }
 
-
-
 .button{
     cursor: pointer;
     background-color: transparent;
@@ -19,8 +17,7 @@
     text-align: center;
     width: 80px;
     border: 1px solid  rgba(0, 108, 170, 1);
-    border-radius: 3px;
-    
+    border-radius: 3px; 
 }
 
 .button:hover{
@@ -53,6 +50,24 @@
 }
 
 @media screen and (max-width: 400px){
-    
+    .button{
+        cursor: pointer;
+        background-color: transparent;
+        color: white;
+        height: 25px;
+        text-align: center;
+        width: 60px;
+        border: 1px solid  rgba(0, 108, 170, 1);
+        border-radius: 3px;
+        font-size: 12px;
+    }
+    .main{
+        height: 25px;
+        margin-top: 3px;
+    }
+    .input{
+       
+        height: 22px;
+    }
 }
 

@@ -155,3 +155,48 @@ select{
         transform: translateY(40px) translateX(-3px);
     }
 }
+@media screen and (max-width: 922px) {
+    .sortText{ 
+        font-size: 12px;
+        padding: 2px;
+        width: 100%;
+    }
+}
+.button{
+    font-size: 13px;
+    width: 65px;
+    height: 20px;
+ }
+
+ .sortsOn{
+    transform: translateX(-22px);
+    border-radius: 0;
+    height: 48px;
+}
+.selectContainer{
+    height: 50px;
+}
+
+@media screen and (max-width: 400px) {
+    .logo{
+        display: none;
+    }
+    .button{
+       font-size: 10px;
+       width: 35px;
+       height: 10px;
+    }
+    .sortsOn{
+        transform: translateX(-49px);
+        border-radius: 0;
+    }
+    .sortText{ 
+        font-size: 8px;
+        padding: 1px;
+        width: 100%;
+    }
+    .selectContainer{
+        height: 40px;
+    }
+    
+}

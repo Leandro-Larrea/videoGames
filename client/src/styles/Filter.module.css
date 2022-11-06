@@ -101,3 +101,22 @@
     padding: 3px;
     width: 100%;
 }
+
+@media screen and (max-width: 922px) {
+    .option{ 
+        font-size: 12px;
+        padding: 2px;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .logo{
+        display: none;
+    }
+
+    .option{ 
+        font-size: 8px;
+        padding: 1px;
+        width: 100%;
+    }
+}

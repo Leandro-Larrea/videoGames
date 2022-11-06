@@ -47,8 +47,9 @@ return (<div className={props.a === 1?style.hover: style.hoverOff}>
                     <a className={style.sortText}>Rating</a>
                     </div>
                         <div className={sortRating === 0?style.sorts: style.sortsOn}>
-                            <button value="ascending" className={style.button} onClick={sort}>Ascending</button>
-                            <button value="descending" className={style.button} onClick={sort}>Descending</button>
+                             <button value="descending" className={style.button} onClick={sort}>Best</button>
+                             <button value="ascending" className={style.button} onClick={sort}>Worst</button>
+                           
                         </div>
                 </div>
                 <div className={style.selectContainer}>

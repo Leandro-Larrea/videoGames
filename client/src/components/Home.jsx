@@ -41,9 +41,9 @@ export function Home(props){
     }
         if(games.length === 0){
         return <div className={style.loaderContainer}> <img className={style.loader} src={loader2}></img></div>}
-        return (<div>
+        return (<main className={style.mainContainer}>
         <Pages juegos={games.length} juegosPorPagina={gamesPerPage} actualizar={fcUpdate} currentPage={currentPage}/>
-        <main className={style.home}>
+        <div className={style.home}>
           
           {renderGames?.map(e =>  
           <Card key={e.id}
@@ -54,7 +54,7 @@ export function Home(props){
           />
           )}
               
-        </main>
         </div>
+        </main>
       )    
     }

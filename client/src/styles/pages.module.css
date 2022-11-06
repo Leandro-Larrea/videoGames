@@ -4,7 +4,7 @@
     justify-content: center;
     gap :1rem;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .button{
@@ -35,4 +35,27 @@
     transform: scale(1.1);
     border: 3px solid rgba(0, 108, 170, 0.76);
     box-shadow: 0 0px 10px white;
+}
+
+@media screen and (max-width: 700px){
+    .button{
+        width:40px;
+        height: 40px;
+    }
+
+    .buttonActive{
+        width:40px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .button{
+        width:35px;
+        height: 35px;
+    }
+    .buttonActive{
+        width: 35px;
+        height: 35px;
+    }
 }
