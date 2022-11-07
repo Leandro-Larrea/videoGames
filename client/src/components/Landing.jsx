@@ -23,12 +23,13 @@ console.log("okasdasd")
    
     return(
         <main className={style.main}>
-              <div className={style.imgContainer}>
-                <img className={style.img} src={img}/>        
+            <div className={style.imgContainer}>
+                <img className={style.img} src={img}/>  
+                <h1 className={style.title}>Wiki Video Games</h1>      
                 <Link className={style.Link} to={"/menu"}>
                     <button className={style.button}>
-                        Go In
-                     </button>
+                      Start 
+                    </button>
                 </Link>             
             </div> 
                 <Particles
