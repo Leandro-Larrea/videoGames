@@ -19,7 +19,6 @@ export function Filter(props){
         if(props.genres && !genres.length)
         {dispatch(getGenres())}
         if(props.platforms && !platforms.length){
-            console.log("dispatchando")
             dispatch(getPlatforms())
             }
     },[])

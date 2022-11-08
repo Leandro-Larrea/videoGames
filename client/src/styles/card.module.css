@@ -41,10 +41,10 @@ input{
     
 }
 .cardHover:hover{
-    background: linear-gradient(rgb(0, 72, 140), rgb(255, 254, 216));
-    box-shadow: 0px 0px 10px rgba(254, 255, 254, 0.918);    
+    
+    box-shadow: 0px 0px 15px rgba(254, 255, 254, 0.918);    
     transform: scale(1.02);
-    background: linear-gradient(90deg,rgb(0, 72, 140), rgb(116, 166, 189));
+    background: linear-gradient(90deg, rgb(144, 188, 209), rgb(221, 61, 181));
     animation: moveBackground 700ms infinite linear alternate ;
     background-size: 500%;
 }

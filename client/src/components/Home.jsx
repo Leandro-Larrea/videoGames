@@ -43,14 +43,13 @@ export function Home(props){
         return <div className={style.loaderContainer}> <img className={style.loader} src={loader2}></img></div>}
         return (<main className={style.mainContainer}>
         <Pages juegos={games.length} juegosPorPagina={gamesPerPage} actualizar={fcUpdate} currentPage={currentPage}/>
-        <div className={style.home}>
-          
-          {renderGames?.map(e =>  
-          <Card key={e.id}
-          name={e.name}
-          img={e.img}
-          genres={e.genres}
-          id={e.id}
+          <div className={style.home}>
+            {renderGames?.map(e =>  
+            <Card key={e.id}
+            name={e.name}
+            img={e.img}
+            genres={e.genres}
+            id={e.id}
           />
           )}
               
