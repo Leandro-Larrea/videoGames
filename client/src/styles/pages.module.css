@@ -15,6 +15,7 @@
     height: 50px;
     cursor: pointer;
     transition: 0.05s;
+    position: relative;
 }
 
 .button:hover{
@@ -39,23 +40,30 @@
 
 @media screen and (max-width: 700px){
     .button{
-        width:40px;
-        height: 40px;
+        width:30px;
+        height: 30px;
     }
 
     .buttonActive{
-        width:40px;
-        height: 40px;
+        width:33px;
+        height: 33px;
     }
+}
+
+.container{
+    gap: 0.8rem
 }
 
 @media screen and (max-width: 400px){
     .button{
-        width:35px;
-        height: 35px;
+        width: 22px;
+        height: 22px;
+    }
+    .container{
+        gap: 0.6rem
     }
     .buttonActive{
-        width: 35px;
-        height: 35px;
+       width:25px;
+        height: 25px;
     }
 }

@@ -11,7 +11,7 @@ const {
 
  const linksitos = async() =>{
      multiLink=[];
-     for(let i = 7; i < 8; i++){
+     for(let i = 7; i < 12; i++){
          multiLink.push(axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&&page=${i}`))
      }
      apiGames = await Promise.all(multiLink);
