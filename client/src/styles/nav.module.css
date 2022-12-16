@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 .nav{
     display: flex;
     width: 100%;
@@ -28,8 +32,9 @@
     display: flex;
     margin: 0;
     box-sizing: border-box;
-    height: 3.1rem;
+    height: 3.12rem;
     background-color: black;
+    width: 100%;
 }
 
 .logo{
@@ -106,7 +111,7 @@
     transition: box-shadow 0.4s;
     box-sizing: border-box;
     color: white;
-    padding: 1px;
+    padding: 5px;
 }
 
 .sortContainerFilterOn{
@@ -164,17 +169,15 @@
 }
 
 .hamburger{
-        text-align: center;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 113px;
-        min-height: 100%;
-        background-color: red;
-        display: none;        
+    text-align: center;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 113px;
+    display: none;        
 }
 
 .sortText{
@@ -219,6 +222,7 @@
         font-size: .9rem;
         background-color: rgba(10,10,10,1);
         margin: 0;
+        
     }
 
     .position{
@@ -252,6 +256,7 @@
     .marginQuery{
         justify-content: center;
     }
+    
     .margin{
         padding: 0;
     }
@@ -261,16 +266,18 @@
     .nav{
         flex-wrap: wrap;
         justify-content: center;
-    }
-
+        background-color: black;
+}
+ 
     .sortFilters{
         justify-content: center;
         position: relative;
-        height: 40px; 
+        height: 45px;
+        top: 0; 
         width: 100%;
         font-size: .9rem;
         background-color: rgba(10,10,10,1);
-    }
+    }  
 }
 
 @media screen and (max-width: 400px) {

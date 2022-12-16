@@ -30,7 +30,9 @@ export function postCharacter(obj){
          await axios.post(`http://localhost:3001/videogames`, obj)
          .then(a=> { console.log(a.data)
             dispatch({type: ADD_GAME, payload:a.data})
-        })
+        }).catch(error =>{console.log(error)})
+           
+        
     }
 }
 

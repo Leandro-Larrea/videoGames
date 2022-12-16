@@ -15,7 +15,7 @@ function App() {
       <Route path="/post" component={Nav}/>
       <Route path="/data" component={Nav}/>
       <Route path="/DbOptions" component={Nav}/>
-      <Route exact path="/menu" component={Home}/>
+      <Route path="/menu" component={Home}/>
       <Route path="/data/:id" component={Data}/>
       <Route exact path="/" component={Landing}/>
       <Route exact path="/post" component={Post}/>
