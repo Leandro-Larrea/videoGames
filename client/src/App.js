@@ -8,6 +8,7 @@ import { Data } from "./components/Data.jsx";
 import Post from "./components/Post.jsx";
 import { DbOptions } from "./components/DbOptions.jsx";
 
+
 function App() {
   return (
     <div className={style.app}>

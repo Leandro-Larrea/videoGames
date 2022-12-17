@@ -19,7 +19,7 @@ export const UPDATED = "UPDATED"
 export const ADD_GAME = "ADD_GAME"
 
 export const getAll = () => dispatch =>
-fetch("http://localhost:3001/videogames")
+fetch("https://videogames-production-8d45.up.railway.app/videogames")
 .then(answer => answer.json())
 .then(a => { 
     dispatch({type: GET_ALL, payload: a["ahi_va_el_json"]})
@@ -27,7 +27,7 @@ fetch("http://localhost:3001/videogames")
 
 export function postCharacter(obj){
     return async function (dispatch){
-         await axios.post(`http://localhost:3001/videogames`, obj)
+         await axios.post(`https://videogames-production-8d45.up.railway.app/videogames`, obj)
          .then(a=> { console.log(a.data)
             dispatch({type: ADD_GAME, payload:a.data})
         }).catch(error =>{console.log(error)})
@@ -37,7 +37,7 @@ export function postCharacter(obj){
 }
 
 export const getGameName = (name) => { return async (dispatch) =>{
-return await axios.get(`http://localhost:3001/videogames?name=${name}`)
+return await axios.get(`https://videogames-production-8d45.up.railway.app/videogames?name=${name}`)
 .then(a =>{
     dispatch({type:GET_GAME_NAME, payload: a.data.ahi_va_el_name})
 })
@@ -49,7 +49,7 @@ return await axios.get(`http://localhost:3001/videogames?name=${name}`)
 }
 
 export const getId = (id) => (dispatch) =>{  
-return fetch(`http://localhost:3001/videogames/${id}`)
+return fetch(`https://videogames-production-8d45.up.railway.app/videogames/${id}`)
 .then(answer => answer.json())
 .then(a => {
     
@@ -62,7 +62,7 @@ export const search = (name) => dispatch =>{
 }
 
 export const getGenres = () => dispatch =>{
-    fetch("http://localhost:3001/genres")
+    fetch("https://videogames-production-8d45.up.railway.app/genres")
     .then(eso => eso.json())
     .then(eso2 =>{
         dispatch({type: GET_GENRES, payload:eso2})
@@ -91,21 +91,21 @@ export const filterDb = (t) => dispatch =>{
     return dispatch({type: FILTER_DB, payload: t})}
 
 export const filterPlatforms = (p) => dispatch =>
-fetch(`http://localhost:3001/videogames/platforms/${p}`)
+fetch(`https://videogames-production-8d45.up.railway.app/videogames/platforms/${p}`)
 .then(e=> e.json())
 .then(a=> { console.log(p, a)
     dispatch({type: FILTER_PLATFORMS, payload: a})
 } )
 
 export const getPlatforms = () => dispatch =>
-    fetch("http://localhost:3001/videogames/platforms")
+    fetch("https://videogames-production-8d45.up.railway.app/videogames/platforms")
     .then(a => a.json())
     .then(b => {
         dispatch({type: GET_PLATFORMS, payload: b}) 
     })
 
 export const deleteGame = (id) => async (dispatch) =>{
-     await axios.delete(`http://localhost:3001/videogames/${id}`)
+     await axios.delete(`https://videogames-production-8d45.up.railway.app/videogames/${id}`)
      .then(a=> {console.log(a)
         dispatch({type: GAME_DELETED, payload: a.data})
      })
@@ -116,7 +116,7 @@ export const deleteGame = (id) => async (dispatch) =>{
 }
 
 export const updateGame = (id,obj) => async (dispatch) =>{
-    await axios.put(`http://localhost:3001/videogames/${id}`,obj)
+    await axios.put(`https://videogames-production-8d45.up.railway.app/videogames/${id}`,obj)
     .then(a=> { console.log(a.data)
         dispatch({type: UPDATED, payload:a.data.a})
     })
