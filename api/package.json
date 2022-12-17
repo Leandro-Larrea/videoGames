@@ -33,6 +33,8 @@
     "supertest-session": "^4.1.0"
   },
   "production": {
+    "pg": "^8.5.1",
+    "sequelize": "^6.3.5",
     "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
     "dialectOptions": {
