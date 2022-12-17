@@ -31,17 +31,6 @@
     "nodemon": "^2.0.6",
     "supertest": "^6.0.1",
     "supertest-session": "^4.1.0"
-  },
-  "production": {
-    "pg": "^8.5.1",
-    "sequelize": "^6.3.5",
-    "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres",
-    "dialectOptions": {
-       "ssl": {
-         "require": true,
-         "rejectUnauthorized": false
-       }
-     }
-   }
+  }
 }
+
