@@ -66,3 +66,16 @@
     position: absolute;
     cursor: pointer;
 }
+
+@media screen and (max-width: 400px){
+    .button{
+        width: 150px;
+   height: 46px;
+   color: rgba(255,255,255, 1);
+   font-size: 20px;
+    }
+    .title{
+        position: absolute;
+        font-size: 1.7rem;
+    }
+}
