@@ -86,10 +86,9 @@ input{
     opacity: .9;
     width: 100%;
     margin-top: -1px;
+    transition: none;
 }
-.name:hover{
- opacity: 1;
-}
+
 
 .imgContainer{
     margin: 0;

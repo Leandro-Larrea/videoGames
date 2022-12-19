@@ -1,0 +1,46 @@
+.imageContainer{
+    width: 100%;
+    height: 100%;
+}
+
+.on{
+    opacity: 1;
+    transition: opacity 1s;
+    width: 100%;
+    height: 100%;
+}
+
+.off{
+    width: 100%;
+    opacity: 0;
+}
+
+.loaderContainer{
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.loader{
+    text-align: center;
+    color: white;
+}
+
+
+
+
+/* <div className={style.imageContainer}>
+<img
+    src={src}
+    alt={alt}
+    className={imageLoaded? style.on: style.off}
+    onLoad={()=> setImageLoaded(true)}
+/>
+{!imageLoaded &&(
+    <div className={style.loaderContainer}>
+        <span className={style.loader}>
+            Loading...
+        </span>
+    </div>
+)}
+</div> */
