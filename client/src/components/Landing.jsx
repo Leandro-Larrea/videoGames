@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "../styles/landing.module.css"
 import { Component } from "react";
 import img from "../images/ciberPunk.jpg"
@@ -20,11 +20,13 @@ console.log("okasdasd")
     const particlesLoaded = useCallback(async container => {
         await console.log(container);
     }, []);
+
+    const [render, setRender] = useState(false)
    
     return(
-        <main className={style.main}>
+        <main className={render? style.main: style.mainOff}>
             <div className={style.imgContainer}>
-                <img className={style.img} src={img}/>  
+                <img className={render? style.img: style.imageOff} src={img} onLoad={()=>setRender(true)}/>  
                 <h1 className={style.title}>Wiki Video Games</h1>      
                 <Link className={style.Link} to={"/menu"}>
                     <button className={style.button}>
