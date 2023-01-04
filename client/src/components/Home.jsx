@@ -29,7 +29,7 @@ export function Home(props){
     const [currentPage, setCurrentPage] = useState(1)
     const [gamesPerPage, setGamePerPage] = useState(15)
 
-    if(games === "Game not found.") return (<div className={style.notFoundContainer}>
+     if(games === "Game not found.") return (<div className={style.notFoundContainer}>
       <h1>{games}</h1><img className={style.notFound} src={bowser}>
         </img>
         <button onClick={()=> {
@@ -43,8 +43,8 @@ export function Home(props){
     const fcUpdate = (x)=>{
       setCurrentPage(x)
     }
-        if(games.length === 0){
-        return <main className={style.mainContainer}> <img className={style.loader} src={loader2}></img></main>}
+         if(games.length === 0){
+         return <main className={style.mainContainer}> <img className={style.loader} src={loader2}></img></main>}
         return (<main className={style.mainContainer}>
         <Pages juegos={games.length} juegosPorPagina={gamesPerPage} actualizar={fcUpdate} currentPage={currentPage}/>
           <div className={style.home}>
