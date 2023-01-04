@@ -135,14 +135,14 @@ input{
 
 @media screen and (max-width: 700px){
     .cardHover{
-        width: 280px;
+        max-width: 380px;
         padding: 3px;
     }
 }
 
 @media screen and (max-width: 400px){ 
     .card{
-        font-size: 13px;
-        width: 260px;
+        font-size: 14px;
+        max-width: 300px;
     }
 }

@@ -70,7 +70,7 @@ export function Nav(props){
                     <div className={style.position}>
                         <div onClick={ff} className={b === 0?style.sortContainerFilter: style.sortContainerFilterOn}>
                             <div  className={style.sortText}>
-                                <a className={b === 1? style.aOn: style.aOff}>Genres Filter</a>
+                                <a className={b === 1? style.aOn: style.aOff}>Genres</a>
                             </div>
                         </div>
                         <Filter  b={b} match={props.match} genres={true}></Filter>
@@ -78,7 +78,7 @@ export function Nav(props){
                     <div className={style.position}>
                         <div onClick={fff} className={c=== 0?style.sortContainerFilter: style.sortContainerFilterOn}>
                             <div  className={style.sortText}>
-                                <a className={c === 1? style.aOn: style.aOff}>Origin Filter</a>
+                                <a className={c === 1? style.aOn: style.aOff}>Origin</a>
                             </div>
                         </div>
                         <Filter c={c} match={props.match} origin={true}></Filter>
@@ -86,7 +86,7 @@ export function Nav(props){
                     <div className={style.position}>
                         <div onClick={ffff} className={d=== 0?style.sortContainerFilter: style.sortContainerFilterOn}>
                             <div  className={style.sortText}>
-                                <a className={d === 1? style.aOn: style.aOff}>Platforms Filter</a>
+                                <a className={d === 1? style.aOn: style.aOff}>Platforms</a>
                             </div>
                         </div>
                         <Filter d={d} match={props.match} platforms={true}></Filter>
@@ -104,7 +104,7 @@ export function Nav(props){
                         <NavLink className={style.sortContainer} to="/DbOptions"> 
                         <div className={style.sortContainerFilter}>
                             <div  className={style.sortText}>                    
-                                    <p className={style.navButton}>Db Options</p>  
+                                    <p className={style.navButton}>DB Options</p>  
                             </div> 
                         </div>
                         </NavLink >

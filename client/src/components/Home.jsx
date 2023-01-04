@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Card} from "./Card.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getAll } from "../redux/actions";
+import { clean, getAll } from "../redux/actions";
 import style from "../styles/home.module.css";
 import loader2 from "../images/loader2.gif";
 import { genresFilter } from "../redux/actions";
@@ -19,6 +19,7 @@ export function Home(props){
         dispatch(getAll())
         }
         dispatch(genresFilter("Todos"))
+        return ()=> clean("filterGames")
     },[]);
 
     useEffect(()=>{
@@ -31,6 +32,9 @@ export function Home(props){
     if(games === "Game not found.") return (<div className={style.notFoundContainer}>
       <h1>{games}</h1><img className={style.notFound} src={bowser}>
         </img>
+        <button onClick={()=> {
+          dispatch(genresFilter("Todos"))
+           }} className={style.notFoundButton}>Ok</button>
         </div>)
 
     const lastGame = currentPage * gamesPerPage
@@ -40,7 +44,7 @@ export function Home(props){
       setCurrentPage(x)
     }
         if(games.length === 0){
-        return <div className={style.loaderContainer}> <img className={style.loader} src={loader2}></img></div>}
+        return <main className={style.mainContainer}> <img className={style.loader} src={loader2}></img></main>}
         return (<main className={style.mainContainer}>
         <Pages juegos={games.length} juegosPorPagina={gamesPerPage} actualizar={fcUpdate} currentPage={currentPage}/>
           <div className={style.home}>

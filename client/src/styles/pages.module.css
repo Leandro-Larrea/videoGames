@@ -56,14 +56,14 @@
 
 @media screen and (max-width: 400px){
     .button{
-        width: 22px;
-        height: 22px;
+        width: 25px;
+        height: 25px;
     }
     .container{
         gap: 0.6rem
     }
     .buttonActive{
-       width:25px;
-        height: 25px;
+       width:27px;
+        height: 27px;
     }
 }
