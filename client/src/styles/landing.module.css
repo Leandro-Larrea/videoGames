@@ -4,7 +4,7 @@
     position: relative;
     max-height: 100vh;
     box-sizing: border-box;
-    overflow-y: hidden;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;   
