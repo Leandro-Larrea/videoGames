@@ -75,7 +75,6 @@ input{
     width: 100%;
     background-color: rgba(254, 255, 254, 0.493);
     margin: 0;
-    
 }
 
 .name{
@@ -109,9 +108,7 @@ input{
     transition: opacity .3s ;
 }
 
-.imgContainer:hover{
-    opacity: 0.4;
-}
+
 
 .genres{
     right: 0;
