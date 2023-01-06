@@ -1,6 +1,7 @@
 import {SORT_ABC, SORT_RATING,SEARCH_NAME, FILTER, CLEAN, GET_ALL, GET_GAME_DETAIL,
          GET_GAME_NAME, GET_GENRES, FILTER_DB, GET_PLATFORMS,FILTER_PLATFORMS, GAME_DELETED,
-          EDIT_GAME,UPDATED, ADD_GAME} from "./actions.js"
+          EDIT_GAME,UPDATED, ADD_GAME} from "./actions.js";
+import { browserName, browserVersion } from "react-device-detect";
 
 const initialState ={
     games:[],
@@ -12,13 +13,15 @@ const initialState ={
     answer:""
 }
 
+
+
 export function rootReducer(state = initialState, action){
     switch (action.type){           
         case GET_ALL:
             let c = action.payload.map((e) => {
-                        if(e.createdAtDb) return {...e, genres: e.genres.map(e => e.name)}
-                        return e
-                    });      
+                if(e.createdAtDb) return {...e, genres: e.genres.map(e => e.name)}
+                return e
+                });      
             return{
                 ...state,
                 games: [...c],
@@ -91,8 +94,17 @@ export function rootReducer(state = initialState, action){
             }
         case SORT_ABC:
             if(!Array.isArray(state.filterGames)) state.filterGames = [...state.games]
-           let b = action.payload === "normal"?state.filterGames.sort((a,b) =>{if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;}):
-           state.filterGames.sort((a,b) =>{if(b.name.toLowerCase() < a.name.toLowerCase()) return -1;})
+           let b = action.payload === "normal"?
+           browserName === "Firefox"?state.filterGames.sort((a,b) =>{
+                if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;}):
+            state.filterGames.sort((a,b) =>{
+                if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;}):
+           browserName === "Firefox"?state.filterGames.sort((a,b) =>{
+                if(b.name.toLowerCase() > a.name.toLowerCase()) return 1;}):
+            state.filterGames.sort((a,b) =>{
+                if(b.name.toLowerCase() < a.name.toLowerCase()) return -1;})
+
+           console.log("asd", action.payload)
             return{
                 ...state,
                 filterGames: [...b]

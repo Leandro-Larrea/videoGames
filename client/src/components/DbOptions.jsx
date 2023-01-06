@@ -41,6 +41,7 @@ export const DbOptions = ()=>{
                         key={e.id}
                         name={e.name}
                         img={e.img}
+                        rating={e.rating}
                         genres={e.genres}
                         id={e.id}
                     />

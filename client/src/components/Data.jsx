@@ -24,7 +24,7 @@ return (
         <div className={style.imgContainer}>
             <h1 className={style.title}>{detail.name}</h1>
             <img className={style.img} src={detail.img?detail.img:kirby1}></img>
-            <p className={style.rating}>{detail.rating}/5</p>
+            <p className={style.rating}>{detail.rating}/5⭐</p>
             <div className={style.description}></div>                  
         </div>
         <div className={style.dataMain}>

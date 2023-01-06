@@ -36,6 +36,7 @@ const sort = (e)=>{
 const abc = (e)=>{
     let t = e.target.value
     if(t !== "ABC"){
+        console.log("hasta aca si", t)
     dispatch(sortByAbc(t))}
     props.match.path !== "/menu" && history.push("/menu")
 }

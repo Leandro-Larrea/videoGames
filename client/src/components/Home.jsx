@@ -53,6 +53,7 @@ export function Home(props){
             name={e.name}
             img={e.img}
             genres={e.genres}
+            rating={e.rating}
             id={e.id}
           />
           )}

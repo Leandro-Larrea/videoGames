@@ -14,6 +14,7 @@ export function Card(props){
                     <ImageLoader src={props.img} alt={"notImg"}/>
                 </div>
             <div className={style.name}>{props.name}</div>
+            <p className={style.rating}>{`${props.rating}`.split("").slice(0,3).join("")}⭐</p>
             <div className={style.genres}>{props.genres?.map((e,i) => <div key={i}>{e}</div>)}</div>  
         </div>
         </div>
